@@ -6,14 +6,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "products")
 public class Product {
 
     @Id
@@ -26,10 +24,7 @@ public class Product {
     @Column(name = "model")
     private String model;
 
-    @Column(name = "price")
-    private double price;
-
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "product")
-    private List<Properties> propertiesList;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Properties propertiesList;
 
 }

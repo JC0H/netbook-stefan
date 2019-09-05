@@ -1,13 +1,17 @@
 package pl.laptopy.polizingowe.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "properties")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Properties {
 
     @Id
@@ -26,11 +30,8 @@ public class Properties {
     @Column(name = "screen")
     private String screen;
 
-    @Column(name = "HardDriveCapacity")
-    private String HardDriveCapacity;
-
     @Column(name = "RAM")
-    private String RAM;
+    private String ram;
 
     @Column(name = "network")
     private String network;
@@ -50,7 +51,9 @@ public class Properties {
     @Column(name = "additionalInformation")
     private String additionalInformation;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id")
+    @Column(name = "price")
+    private double price;
+
+    @OneToOne
     private Product product;
 }

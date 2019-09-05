@@ -1,26 +1,18 @@
 package pl.laptopy.polizingowe.service;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import pl.laptopy.polizingowe.model.Product;
+import pl.laptopy.polizingowe.repositorie.ProductRepository;
 
-import java.util.Optional;
+import java.util.List;
+@Service
+@RequiredArgsConstructor
+public class ProductService {
 
-public interface ProductService {
+    private final ProductRepository productRepository;
 
-    Optional<Product> findById(Long id);
-
-    Product save(Product product);
-
-    Product findByProcessor(Product product);
-
-    Product findByGraphics(Product product);
-
-    Product findByMemory(Product product);
-
-    Product findByScreen(Product product);
-
-    Product findByHardDriveCapacity(Product product);
-
-    Product findByRam(Product product);
-
-    Product findByModel(Product product);
+    public List<Product> findAllByBrand(String brand) {
+        return productRepository.findAllByBrand(brand).orElseThrow( () -> new IllegalArgumentException());
+    }
 }
