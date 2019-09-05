@@ -1,11 +1,12 @@
 package pl.laptopy.polizingowe.service;
 
-import org.springframework.data.repository.CrudRepository;
 import pl.laptopy.polizingowe.model.Product;
+
+import java.util.Optional;
 
 public interface ProductService {
 
-    Product findById(Long id);
+    Optional<Product> findById(Long id);
 
     Product save(Product product);
 

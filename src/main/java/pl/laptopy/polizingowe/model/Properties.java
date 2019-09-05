@@ -1,133 +1,56 @@
 package pl.laptopy.polizingowe.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "properties")
+@Getter
+@Setter
 public class Properties {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
+    @Column(name = "processor")
     private String processor;
-    private String graphics; // graphics card
+
+    @Column(name = "graphics")
+    private String graphics;
+
+    @Column(name = "memory")
     private String memory;
+
+    @Column(name = "screen")
     private String screen;
+
+    @Column(name = "HardDriveCapacity")
     private String HardDriveCapacity;
+
+    @Column(name = "RAM")
     private String RAM;
+
+    @Column(name = "network")
     private String network;
+
+    @Column(name = "color")
     private String color;
 
+    @Column(name = "weight")
     private double weight;
 
+    @Column(name = "operatingSystem")
     private String operatingSystem;
+
+    @Column(name = "usb")
     private String usb;
+
+    @Column(name = "additionalInformation")
     private String additionalInformation;
 
-    public Long getId() {
-        return Id;
-    }
-
-    public void setId(Long id) {
-        Id = id;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getProcessor() {
-        return processor;
-    }
-
-    public void setProcessor(String processor) {
-        this.processor = processor;
-    }
-
-    public String getGraphics() {
-        return graphics;
-    }
-
-    public void setGraphics(String graphics) {
-        this.graphics = graphics;
-    }
-
-    public String getMemory() {
-        return memory;
-    }
-
-    public void setMemory(String memory) {
-        this.memory = memory;
-    }
-
-    public String getScreen() {
-        return screen;
-    }
-
-    public void setScreen(String screen) {
-        this.screen = screen;
-    }
-
-    public String getHardDriveCapacity() {
-        return HardDriveCapacity;
-    }
-
-    public void setHardDriveCapacity(String hardDriveCapacity) {
-        HardDriveCapacity = hardDriveCapacity;
-    }
-
-    public String getRAM() {
-        return RAM;
-    }
-
-    public void setRAM(String RAM) {
-        this.RAM = RAM;
-    }
-
-    public String getNetwork() {
-        return network;
-    }
-
-    public void setNetwork(String network) {
-        this.network = network;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    public String getOperatingSystem() {
-        return operatingSystem;
-    }
-
-    public void setOperatingSystem(String operatingSystem) {
-        this.operatingSystem = operatingSystem;
-    }
-
-    public String getUsb() {
-        return usb;
-    }
-
-    public void setUsb(String usb) {
-        this.usb = usb;
-    }
-
-    public String getAdditionalInformation() {
-        return additionalInformation;
-    }
-
-    public void setAdditionalInformation(String additionalInformation) {
-        this.additionalInformation = additionalInformation;
-    }
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 }
