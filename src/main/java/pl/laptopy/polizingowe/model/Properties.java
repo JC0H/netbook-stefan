@@ -18,6 +18,9 @@ public class Properties {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
+    @Column(name = "model")
+    private String model;
+
     @Column(name = "processor")
     private String processor;
 
@@ -53,7 +56,4 @@ public class Properties {
 
     @Column(name = "price")
     private double price;
-
-    @OneToOne
-    private Product product;
 }

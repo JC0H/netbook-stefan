@@ -22,9 +22,6 @@ public class Product {
     @Column(name = "brand")
     private String brand;
 
-    @Column(name = "model")
-    private String model;
-
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Properties> propertiesList;
 
