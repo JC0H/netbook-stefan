@@ -37,7 +37,7 @@ insert into PRODUCT_PROPERTIES_LIST (product_id, properties_list_id)
 values (1, 1);
 
 insert into PRODUCT_PROPERTIES_LIST (product_id, properties_list_id)
-values (2, 2);
+values (1, 2);
 
 insert into PRODUCT_PROPERTIES_LIST (product_id, properties_list_id)
 values (3, 3);
