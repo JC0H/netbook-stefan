@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,7 +25,7 @@ public class Product {
     @Column(name = "model")
     private String model;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Properties propertiesList;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Properties> propertiesList;
 
 }
