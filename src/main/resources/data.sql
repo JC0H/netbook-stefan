@@ -1,4 +1,4 @@
-insert into product (id,brand)
+         insert into product (id,brand)
 values (1,'Lenovo');
 
 insert into product (id,brand)
