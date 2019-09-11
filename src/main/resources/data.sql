@@ -1,17 +1,8 @@
-insert into PRODUCT (id,brand)
-values (1,'Lenovo');
-
-insert into PRODUCT (id,brand)
-values (2,'HP');
-
-insert into PRODUCT (id,brand)
-values (3,'Dell');
-
-insert into PRODUCT (id,brand)
-values (4,'Apple');
-
-insert into PRODUCT (id,brand)
-values (5,'Fujitsu');
+insert into PRODUCT (id,brand) VALUES (1,'Lenovo');
+insert into PRODUCT (id,brand) VALUES (2,'HP');
+insert into PRODUCT (id,brand) VALUES (3,'Dell');
+insert into PRODUCT (id,brand) VALUES (4,'Apple');
+insert into PRODUCT (id,brand) VALUES (5,'Fujitsu');
 
 INSERT INTO PROPERTIES (id,MODEL,PROCESSOR,GRAPHICS,MEMORY,SCREEN,RAM,NETWORK,COLOR,WEIGHT,OPERATING_SYSTEM,USB
                          ,ADDITIONAL_INFORMATION ,PRICE)
@@ -31,17 +22,13 @@ INSERT INTO PROPERTIES (id,MODEL,PROCESSOR,GRAPHICS,MEMORY,SCREEN,RAM,NETWORK,CO
                           ,ADDITIONAL_INFORMATION ,PRICE)
   VALUES (4,'A4','AMD x4','Intel Root l5','SSD 126','15.6in 1920x1080','8GB','Wi-Fi|Wi-Fi 80','Black',1.200,'Linux',
            'USB x3','Very good', 1540.00);
-INSERT INTO PRODUCT_PROPERTIES_LIST (PRODUCT_id, properties_list_id)
-VALUES (1, 1);
-INSERT INTO PRODUCT_PROPERTIES_LIST (PRODUCT_id, properties_list_id)
-VALUES (1, 2);
-INSERT INTO PRODUCT_PROPERTIES_LIST (PRODUCT_id, properties_list_id)
-VALUES (3, 3);
-INSERT INTO PRODUCT_PROPERTIES_LIST (PRODUCT_id, properties_list_id)
-VALUES (4, 4);
-INSERT INTO ORDERS (id, order_date) VALUES (1, '2019-08-20');
-INSERT INTO ORDERS (id, order_date) VALUES (2, '2019-08-20');
-INSERT INTO ORDERS_PRODUCTS(orders_id ,PRODUCTs_id) VALUES (1, 1);
-INSERT INTO ORDERS_PRODUCTS(orders_id, PRODUCTs_id) VALUES (1, 2);
-INSERT INTO ORDERS_PRODUCTS(orders_id, PRODUCTs_id) VALUES (2, 4);
-INSERT INTO ORDERS_PRODUCTS(orders_id, PRODUCTs_id) VALUES (2, 5);
+INSERT INTO PRODUCT_PROPERTIES_LIST (PRODUCT_id, properties_list_id) VALUES (1, 1);
+INSERT INTO PRODUCT_PROPERTIES_LIST (PRODUCT_id, properties_list_id) VALUES (1, 2);
+INSERT INTO PRODUCT_PROPERTIES_LIST (PRODUCT_id, properties_list_id) VALUES (3, 3);
+INSERT INTO PRODUCT_PROPERTIES_LIST (PRODUCT_id, properties_list_id) VALUES (4, 4);
+INSERT INTO ORDERSUMMARY (id, order_date) VALUES (1, '2019-08-20');
+INSERT INTO ORDERSUMMARY (id, order_date) VALUES (2, '2019-08-20');
+INSERT INTO ORDERSUMMARY_PRODUCTS(orders_id ,PRODUCTs_id) VALUES (1, 1);
+INSERT INTO ORDERSUMMARY_PRODUCTS(orders_id, PRODUCTs_id) VALUES (1, 2);
+INSERT INTO ORDERSUMMARY_PRODUCTS(orders_id, PRODUCTs_id) VALUES (2, 4);
+INSERT INTO ORDERSUMMARY_PRODUCTS(orders_id, PRODUCTs_id) VALUES (2, 5);
