@@ -3,6 +3,8 @@ package pl.laptopy.polizingowe.model;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -16,9 +18,11 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    @Column(name = "brand")
+    @Column
+    @NotEmpty(message = "Please provide a brand.")
     private String brand;
 
+    @NotEmpty(message = "Properties field is empty.")
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Properties> propertiesList;
 
