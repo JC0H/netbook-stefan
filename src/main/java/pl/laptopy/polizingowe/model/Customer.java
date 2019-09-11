@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -14,19 +13,19 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "order_summary")
-public class Orders {
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "order_date")
-    private Date orderDate;
+    @Column
+    private String username;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Product> products;
+    @Column
+    private String email;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Customer customers;
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
 }
