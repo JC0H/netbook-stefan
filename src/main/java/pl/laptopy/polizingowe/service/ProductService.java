@@ -3,7 +3,7 @@ package pl.laptopy.polizingowe.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.laptopy.polizingowe.model.Product;
-import pl.laptopy.polizingowe.repositorie.ProductRepository;
+import pl.laptopy.polizingowe.repository.ProductRepository;
 
 import java.util.List;
 @Service

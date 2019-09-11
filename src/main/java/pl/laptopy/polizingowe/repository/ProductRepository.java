@@ -1,4 +1,4 @@
-package pl.laptopy.polizingowe.repositorie;
+package pl.laptopy.polizingowe.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import pl.laptopy.polizingowe.model.Product;
