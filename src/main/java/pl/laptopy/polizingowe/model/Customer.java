@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import java.util.List;
@@ -27,5 +28,8 @@ public class Customer {
 
     @Column(name = "phone_number")
     private String phoneNumber;
+
+    @ManyToMany
+    private List<OrderSummary> orderSummaryList;
 
 }
