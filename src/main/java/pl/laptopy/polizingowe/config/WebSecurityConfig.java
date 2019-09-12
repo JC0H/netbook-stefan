@@ -18,7 +18,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().ignoringAntMatchers("/h2-console/**").disable()
                 .headers().frameOptions().disable()
-                .and().authorizeRequests().antMatchers(HttpMethod.GET, "/stefan/products/brand/**").permitAll()
+                .and().authorizeRequests().antMatchers(HttpMethod.GET, "/stefan/**").permitAll()
+                .and().authorizeRequests().antMatchers(HttpMethod.GET, "/products/list/**").permitAll()
                 .and().authorizeRequests().antMatchers("/", "/home").permitAll()
                 .and().authorizeRequests().antMatchers("/h2-console/**").permitAll()
 

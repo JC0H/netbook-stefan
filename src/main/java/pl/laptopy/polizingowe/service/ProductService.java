@@ -16,4 +16,8 @@ public class ProductService {
         return productRepository.findAllByBrand(brand).orElseThrow( () -> new IllegalArgumentException("There is no such brand"));
     }
 
+    public Iterable<Product> findAll() {
+        return productRepository.findAll();
+    }
+
 }

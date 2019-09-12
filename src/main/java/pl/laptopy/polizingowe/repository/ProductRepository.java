@@ -10,4 +10,6 @@ public interface ProductRepository
         extends CrudRepository<Product, Long>
 {
     Optional<List<Product>> findAllByBrand(String brand);
+
+    Iterable<Product> findAll();
 }
