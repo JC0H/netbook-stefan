@@ -1,6 +1,7 @@
 package pl.laptopy.polizingowe.model;
 
 import lombok.*;
+import pl.laptopy.polizingowe.model.domain.AbstractDomainClass;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Product {
+public class Product extends AbstractDomainClass {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

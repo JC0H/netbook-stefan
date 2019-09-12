@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico"/>
+
+    <title>Navbar Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+    <link href="../../static/css/spring-core.css"
+          th:href="@{css/spring-core.css}" rel="stylesheet" media="screen" />
+</head>
+
+<body>
+<div class="container">
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" th:text="${projectname}">Project name</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a th:href="@{/hello}">Login <span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+    </nav>
+</div> <!-- /container -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+
+<div th:if="${not #lists.isEmpty(products)}">
+    <h2>Product List</h2>
+    <table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Processor</th>
+            <th>Graphics</th>
+            <th>Memory</th>
+            <th>Screen</th>
+            <th>RAM</th>
+            <th>Network</th>
+            <th>Color</th>
+            <th>Weight</th>
+            <th>Operating System</th>
+            <th>USB</th>
+            <th>Additional Information</th>
+            <th>Price</th>
+        </tr>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.brand}"></td>
+<!--            <td th:text="${product.propertiesList.model}"></td>-->
+<!--            <td th:text="${product.propertiesList.processor}"></td>-->
+<!--            <td th:text="${product.propertiesList.graphics}"></td>-->
+<!--            <td th:text="${product.propertiesList.memory}"></td>-->
+<!--            <td th:text="${product.propertiesList.screen}"></td>-->
+<!--            <td th:text="${product.propertiesList.ram}"></td>-->
+<!--            <td th:text="${product.propertiesList.network}"></td>-->
+<!--            <td th:text="${product.propertiesList.color}"></td>-->
+<!--            <td th:text="${product.propertiesList.weight}"></td>-->
+<!--            <td th:text="${product.propertiesList.operatingSystem}"></td>-->
+<!--            <td th:text="${product.propertiesList.usb}"></td>-->
+<!--            <td th:text="${product.propertiesList.additionalInformation}"></td>-->
+<!--            <td th:text="${product.propertiesList.price}"></td>-->
+        </tr>
+    </table>
+</div>
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+</body>
+</html>

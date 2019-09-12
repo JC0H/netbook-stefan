@@ -20,11 +20,20 @@ public class ProductController {
         return productService.findAllByBrand(brand);
     }
 
-    @GetMapping("/products/list")
-    public Iterable<Product> listProducts() {
-        return productService.findAll();
+//    @GetMapping("/products/list")
+//    @ModelAttribute("products")
+//    public Iterable<Product> listProducts() {
+//        return productService.findAll();
+//    }
+
+    @RequestMapping("/products/list")
+    // removed: @RequestMapping({"/list", "/"})
+    public String listProducts(Model model) {
+
+        model.addAttribute("products", productService.findAll());
+
+        return "products/list";
     }
 
+
 }
-
-
