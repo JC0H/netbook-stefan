@@ -1,6 +1,6 @@
 app:
   stefan:
-    netbook: /stefan/notebook
+    notebook: /stefan/notebook
 spring:
   h2:
     console:
@@ -8,4 +8,16 @@ spring:
       path: /h2-console
   jpa:
     show-sql: true
-    ddl-auto: create-drop
+    hibernate:
+      ddl-auto: none
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ostap.shevchenko.con@gmail.com
+    password: andrii2019
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

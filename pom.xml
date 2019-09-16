@@ -20,6 +20,7 @@
         <bootstrap.version>3.3.5</bootstrap.version>
         <jquery.version>2.1.4</jquery.version>
         <spring.mail.sender.verion>2.0.1.RELEASE</spring.mail.sender.verion>
+        <javax.mail.verion>1.4</javax.mail.verion>
     </properties>
 
     <dependencies>
@@ -63,6 +64,12 @@
             <artifactId>spring-boot-starter-mail</artifactId>
             <version>${spring.mail.sender.verion}</version>
         </dependency>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>${javax.mail.verion}</version>
+        </dependency>
+
 
         <!--   DATA BASE     -->
         <dependency>

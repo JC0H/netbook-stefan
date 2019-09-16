@@ -15,7 +15,7 @@ public class WebAppController {
         appMode = environment.getProperty("app-mode");
     }
 
-    @RequestMapping("/")
+    @RequestMapping("/security")
     public String index(Model model){
         model.addAttribute("projectname", "Wyskakuj z kasy");
 
