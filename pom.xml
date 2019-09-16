@@ -19,6 +19,7 @@
         <spring.jpa.version>2.1.6.RELEASE</spring.jpa.version>
         <bootstrap.version>3.3.5</bootstrap.version>
         <jquery.version>2.1.4</jquery.version>
+        <spring.mail.sender.verion>2.0.1.RELEASE</spring.mail.sender.verion>
     </properties>
 
     <dependencies>
@@ -57,6 +58,11 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+            <version>${spring.mail.sender.verion}</version>
+        </dependency>
 
         <!--   DATA BASE     -->
         <dependency>
@@ -86,7 +92,6 @@
             <version>${jquery.version}</version>
         </dependency>
     </dependencies>
-
 
     <build>
         <plugins>

@@ -9,7 +9,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "orders")
+@RequestMapping(name = "${app.stefan.notebook}" + "/orders")
 @RequiredArgsConstructor
 public class OrderSummaryController {
 

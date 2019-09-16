@@ -1,6 +1,6 @@
 app:
   stefan:
-    netbook: /netbook/stefan
+    netbook: /stefan/notebook
 spring:
   h2:
     console:
