@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
@@ -24,11 +23,10 @@ public class OrderSummary {
     private Long id;
 
     @Column(name = "order_date")
-    @NotNull
+    @NotEmpty
     private Date orderDate;
 
     @NotEmpty(message = "No products added into order.")
-    @NotNull
     @OneToMany(cascade = CascadeType.ALL)
     private List<Product> products;
 

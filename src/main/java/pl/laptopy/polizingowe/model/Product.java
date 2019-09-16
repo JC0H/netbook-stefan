@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -27,6 +26,6 @@ public class Product {
 
     @NotEmpty(message = "Properties field is empty.")
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Properties> propertiesList;
+    private List<ProductDetails> productDetailsList;
 
 }
