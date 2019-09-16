@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.laptopy.polizingowe.model.OrderSummary;
 import pl.laptopy.polizingowe.repository.OrderSummaryRepository;
+import pl.laptopy.polizingowe.utils.ListConverter;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -13,17 +13,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderSummaryService {
 
+    private final ListConverter<OrderSummary> orderSummaryListConverter;
     private final OrderSummaryRepository orderSummaryRepository;
 
     public List<OrderSummary> findAllOrdersAndSortByDate() {
-        List<OrderSummary> orderSummaryList = convertIterableToList(orderSummaryRepository.findAll());
+        List<OrderSummary> orderSummaryList = orderSummaryListConverter.convertIterableToList(orderSummaryRepository.findAll());
         orderSummaryList.sort((Comparator.comparing(OrderSummary::getOrderDate)));
-        return orderSummaryList;
-    }
-
-    private List<OrderSummary> convertIterableToList(Iterable<OrderSummary> orderIterable) {
-        List<OrderSummary> orderSummaryList = new ArrayList<>();
-        orderIterable.forEach(orderSummaryList::add);
         return orderSummaryList;
     }
 }

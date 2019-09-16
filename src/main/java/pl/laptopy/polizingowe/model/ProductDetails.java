@@ -1,6 +1,9 @@
 package pl.laptopy.polizingowe.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -11,7 +14,8 @@ import javax.validation.constraints.NotEmpty;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Properties {
+@Table(name = "product_details")
+public class ProductDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

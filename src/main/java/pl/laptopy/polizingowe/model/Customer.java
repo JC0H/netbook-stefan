@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Entity
@@ -14,18 +14,22 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Product {
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @Column
-    @NotEmpty(message = "Please provide a brand.")
-    private String brand;
+    private String username;
 
-    @NotEmpty(message = "Properties field is empty.")
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProductDetails> productDetailsList;
+    @Column
+    private String email;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @ManyToMany
+    private List<OrderSummary> orderSummaryList;
 
 }
