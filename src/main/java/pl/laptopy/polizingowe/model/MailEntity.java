@@ -13,16 +13,19 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class MailToCustomers {
+public class MailEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ElementCollection(fetch = FetchType.EAGER)
+    @ElementCollection
     private List<String> receivers;
 
     private String message;
 
     private String subject;
+
+    @ElementCollection
+    private List<String> pathToAttachment;
 
 }

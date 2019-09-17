@@ -1,6 +1,6 @@
-app:
+api:
   stefan:
-    notebook: /stefan/notebook
+    notebook: stefan/notebook
 spring:
   h2:
     console:
