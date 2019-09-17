@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class MailToCustomers {
+public class MailToSend {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,5 +24,8 @@ public class MailToCustomers {
     private String message;
 
     private String subject;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> pathToAttachment;
 
 }
