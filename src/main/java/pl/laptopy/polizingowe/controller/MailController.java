@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import pl.laptopy.polizingowe.model.MailEntity;
 import pl.laptopy.polizingowe.service.MailService;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(name = "${api.stefan.notebook}", method = RequestMethod.GET)
@@ -13,7 +15,7 @@ public class MailController {
     private final MailService mailService;
 
     @PostMapping("/mail")
-    public ResponseEntity sendSimpleMailToCustomers(@RequestBody MailEntity mailEntityToSend) {
+    public ResponseEntity sendSimpleMailToCustomers(@Valid @RequestBody MailEntity mailEntityToSend) {
         mailService.sendMail(mailEntityToSend);
         return ResponseEntity.ok("emails were sent");
     }
