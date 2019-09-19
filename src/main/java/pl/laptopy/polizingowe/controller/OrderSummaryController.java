@@ -9,18 +9,18 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping(name = "${app.stefan.notebook}" + "/orders")
+@RequestMapping(name = "${api.stefan.notebook}")
 @RequiredArgsConstructor
 public class OrderSummaryController {
 
     private final OrderSummaryService orderSummaryService;
 
-    @GetMapping
+    @GetMapping("/orders")
     public List<OrderSummary> findAllOrders() {
         return orderSummaryService.findAllOrdersAndSortByDate();
     }
 
-    @PostMapping
+    @PostMapping("/orders")
     public OrderSummary makeOrder(@Valid @RequestBody OrderSummary orderSummary) {
         return orderSummary;
     }

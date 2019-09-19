@@ -11,7 +11,7 @@
     <groupId>pl.laptopy.polizingowe</groupId>
     <artifactId>netbook-stefan</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>netbook-stefan</name>
+    <name>notebook-stefan</name>
     <description>Stefan web site</description>
 
     <properties>
@@ -63,6 +63,7 @@
             <artifactId>spring-boot-starter-mail</artifactId>
             <version>${spring.mail.sender.verion}</version>
         </dependency>
+
 
         <!--   DATA BASE     -->
         <dependency>

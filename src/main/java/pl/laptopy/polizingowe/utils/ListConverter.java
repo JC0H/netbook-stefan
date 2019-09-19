@@ -9,8 +9,17 @@ import java.util.List;
 public class ListConverter<T> {
 
     public List<T> convertIterableToList(Iterable<T> iterableList) {
-        List orderSummaryList = new ArrayList<>();
+        List<T> orderSummaryList = new ArrayList<>();
         iterableList.forEach(orderSummaryList::add);
         return orderSummaryList;
+    }
+
+    public String[] convertListToArray(List<String> entryList) {
+        int size = entryList.size();
+        String[] array = new String[size];
+        for (int i = 0; i < size; i++) {
+            array[i] = entryList.get(i);
+        }
+        return array;
     }
 }
