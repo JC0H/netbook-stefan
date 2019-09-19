@@ -10,7 +10,6 @@ import pl.laptopy.polizingowe.service.MailService;
 @RequiredArgsConstructor
 @RequestMapping(name = "${api.stefan.notebook}", method = RequestMethod.GET)
 public class MailController {
-
     private final MailService mailService;
 
     @PostMapping("/mail")
