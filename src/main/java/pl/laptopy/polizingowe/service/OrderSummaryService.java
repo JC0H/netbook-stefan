@@ -8,6 +8,7 @@ import pl.laptopy.polizingowe.utils.ListConverter;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,5 +21,9 @@ public class OrderSummaryService {
         List<OrderSummary> orderSummaryList = orderSummaryListConverter.convertIterableToList(orderSummaryRepository.findAll());
         orderSummaryList.sort((Comparator.comparing(OrderSummary::getOrderDate)));
         return orderSummaryList;
+    }
+
+    public OrderSummary createOrder(OrderSummary orderSummary) {
+        return orderSummaryRepository.save(Optional.of(orderSummary).orElseThrow(RuntimeException::new));
     }
 }

@@ -29,7 +29,7 @@ public class Customer {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @ManyToMany
+    @OneToMany
     private List<OrderSummary> orderSummaryList;
 
 }

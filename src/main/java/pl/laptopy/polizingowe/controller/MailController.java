@@ -10,14 +10,14 @@ import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(name = "${api.stefan.notebook}", method = RequestMethod.GET)
+@RequestMapping(value = "${api.stefan.notebook}" + "/mail")
 public class MailController {
     private final MailService mailService;
 
-    @PostMapping("/mail")
+    @PostMapping
     public ResponseEntity sendSimpleMailToCustomers(@Valid @RequestBody MailEntity mailEntityToSend) {
         mailService.sendMail(mailEntityToSend);
-        return ResponseEntity.ok("emails were sent");
+        return ResponseEntity.ok(mailEntityToSend);
     }
 
 }
