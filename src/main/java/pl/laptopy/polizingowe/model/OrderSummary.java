@@ -31,6 +31,6 @@ public class OrderSummary {
     private List<Product> products;
 
     @NotEmpty(message = "Please provide a customer.")
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<Customer> customers;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Customer customers;
 }

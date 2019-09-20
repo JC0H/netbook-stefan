@@ -7,17 +7,26 @@ import pl.laptopy.polizingowe.model.MailEntity;
 import pl.laptopy.polizingowe.service.MailService;
 
 import javax.validation.Valid;
+import java.util.Collections;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(name = "${api.stefan.notebook}", method = RequestMethod.GET)
+@RequestMapping(value = "${api.stefan.notebook}" + "/mail")
 public class MailController {
     private final MailService mailService;
 
-    @PostMapping("/mail")
+    @PostMapping
     public ResponseEntity sendSimpleMailToCustomers(@Valid @RequestBody MailEntity mailEntityToSend) {
         mailService.sendMail(mailEntityToSend);
-        return ResponseEntity.ok("emails were sent");
+        return ResponseEntity.ok(mailEntityToSend);
     }
 
+    @GetMapping
+    public MailEntity asd() {
+        return MailEntity.builder()
+                .receivers(Collections.singletonList("ostap.shevchenko95@gmail.com"))
+                .subject("oneMoreTEst")
+                .message("Hello there, You are the best programmer ever!! :)")
+                .build();
+    }
 }
