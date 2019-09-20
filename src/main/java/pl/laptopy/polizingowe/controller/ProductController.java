@@ -12,14 +12,14 @@ import java.util.List;
 import java.util.Objects;
 
 @RestController
-@RequestMapping(name = "${api.stefan.notebook}")
+@RequestMapping(value = "${api.stefan.notebook}" + "/products")
 @RequiredArgsConstructor
 public class ProductController {
 
     private final ProductService productService;
 
-    @GetMapping("/products")
-    public List<Product> getProducts(@RequestParam(value = "brand") String brand) {
+    @GetMapping
+    public List<Product> getProducts(@RequestParam(value = "brand", required = false) String brand) {
         return Objects.isNull(brand) ? productService.findAll() : productService.findAllByBrand(brand);
     }
 
