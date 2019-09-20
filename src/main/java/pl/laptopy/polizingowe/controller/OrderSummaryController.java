@@ -1,27 +1,31 @@
 package pl.laptopy.polizingowe.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.laptopy.polizingowe.OrderSummaryFacade;
 import pl.laptopy.polizingowe.model.OrderSummary;
+import pl.laptopy.polizingowe.service.MailService;
 import pl.laptopy.polizingowe.service.OrderSummaryService;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping(name = "${api.stefan.notebook}")
+@RequestMapping(value = "${api.stefan.notebook}" + "/orders")
 @RequiredArgsConstructor
 public class OrderSummaryController {
 
-    private final OrderSummaryService orderSummaryService;
+    private final OrderSummaryFacade orderSummaryFacade;
 
-    @GetMapping("/orders")
+    @GetMapping
     public List<OrderSummary> findAllOrders() {
-        return orderSummaryService.findAllOrdersAndSortByDate();
+        return orderSummaryFacade.findAllOrders();
     }
 
-    @PostMapping("/orders")
-    public OrderSummary makeOrder(@Valid @RequestBody OrderSummary orderSummary) {
-        return orderSummary;
+    @PostMapping
+    public ResponseEntity makeOrder(@Valid @RequestBody OrderSummary orderSummary) {
+        OrderSummary createdOrderSummary = orderSummaryFacade.createOrderAndSendConfirmation(orderSummary);
+        return ResponseEntity.status(200).body(createdOrderSummary);
     }
 }
