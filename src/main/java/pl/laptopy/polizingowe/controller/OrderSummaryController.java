@@ -5,8 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.laptopy.polizingowe.OrderSummaryFacade;
 import pl.laptopy.polizingowe.model.OrderSummary;
-import pl.laptopy.polizingowe.service.MailService;
-import pl.laptopy.polizingowe.service.OrderSummaryService;
 
 import javax.validation.Valid;
 import java.util.List;

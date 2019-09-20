@@ -2,7 +2,6 @@ package pl.laptopy.polizingowe.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -19,7 +18,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().ignoringAntMatchers("/h2-console/**").disable()
                 .headers().frameOptions().disable()
-//                .and().authorizeRequests().antMatchers("/product/**").permitAll()
+                .and().authorizeRequests().antMatchers("/stefan/**").permitAll()
+                .and().authorizeRequests().antMatchers("/admin/**").permitAll()
                 .and().authorizeRequests().antMatchers("/", "/home").permitAll()
                 .and().authorizeRequests().antMatchers("/h2-console/**").permitAll()
                 .anyRequest().authenticated()
