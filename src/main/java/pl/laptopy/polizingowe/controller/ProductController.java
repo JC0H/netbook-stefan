@@ -22,21 +22,21 @@ public class ProductController {
 //        return Objects.isNull(brand) ? productService.findAll() : productService.findAllByBrand(brand);
 //    }
 
-    @RequestMapping(value = {"product/list"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public String listProducts(Model model) {
         model.addAttribute("products", productService.findAll());
         return "product/list";
     }
 
-    @RequestMapping(value = {"/","home"})
-    public String home() {
-        return "home";
-    }
-
-    @RequestMapping(value = {"hello"})
-    public String hello() {
-        return "hello";
-    }
+//    @RequestMapping(value = {"/","home"})
+//    public String home() {
+//        return "home";
+//    }
+//
+//    @RequestMapping(value = {"hello"})
+//    public String hello() {
+//        return "hello";
+//    }
 
     @RequestMapping(value = {"login"})
     public String login() {
