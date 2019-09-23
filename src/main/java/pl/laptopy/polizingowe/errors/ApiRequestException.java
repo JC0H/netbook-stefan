@@ -2,7 +2,7 @@ package pl.laptopy.polizingowe.errors;
 
 public class ApiRequestException extends RuntimeException {
 
-    public ApiRequestException(String message) {
-        super(message);
+    public ApiRequestException(ErrorCode message) {
+        super(String.valueOf(message));
     }
 }
