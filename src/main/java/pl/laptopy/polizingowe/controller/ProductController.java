@@ -22,9 +22,6 @@ public class ProductController {
     public List<Product> getProducts(@RequestParam(value = "brand", required = false) String brand) {
         return Objects.isNull(brand) ? productService.findAll() : productService.findAllByBrand(brand);
     }
-
-
-
 }
 
 
