@@ -21,16 +21,7 @@ public class OrderSummaryFacade {
     }
 
     public OrderSummary createOrderAndSendConfirmation(OrderSummary orderSummary) {
-        MailEntity.builder()
-                .message("someone made order, please check your mail")
-                .subject("ordeer is made")
-//                .receivers("link to page")
-                .build();
-        mailService.sendMail(MailEntity.builder()
-                .message("someone made order, please check your mail")
-                .subject("order is made")
-//                .receivers("link to page")
-                .build());
-        return orderSummaryService.createOrder(orderSummary);
+        mailService.sendMailNotification(orderSummary);
+        return orderSummaryService.saveOrderSummary(orderSummary);
     }
 }

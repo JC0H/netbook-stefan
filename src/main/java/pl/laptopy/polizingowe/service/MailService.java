@@ -2,19 +2,19 @@ package pl.laptopy.polizingowe.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import pl.laptopy.polizingowe.model.MailEntity;
+import pl.laptopy.polizingowe.model.OrderSummary;
 import pl.laptopy.polizingowe.utils.ListConverter;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -23,31 +23,33 @@ public class MailService {
 
     private final JavaMailSender javaMailSender;
     private final ListConverter listConverter;
+    private static final String MAIL_SUBJECT_TO_CUSTOMER = "Your order summary.";
+    private static final String MAIL_SUBJECT_TO_STEFAN = "People made an order, please check";
 
-    public void sendMail(MailEntity mailEntityToSend) {
-        if (!Objects.isNull(mailEntityToSend.getPathToAttachment())) sendMailWithAttachments(mailEntityToSend);
-        else sendSimpleMail(mailEntityToSend);
+    public void sendMailNotification(OrderSummary orderSummary) {
+        sendMailNotificationToStefan(orderSummary);
+        sendMailNotificationToCustomer(orderSummary);
     }
 
-    private void sendSimpleMail(MailEntity mailEntityToSend) {
+    private void sendMailNotificationToStefan(OrderSummary orderSummary) {
         SimpleMailMessage message = new SimpleMailMessage();
-        String[] receiversArray = listConverter.convertListToArray(mailEntityToSend.getReceivers());
-        message.setTo(receiversArray);
-        message.setSubject(mailEntityToSend.getSubject());
-        message.setText(mailEntityToSend.getMessage());
+        String customersMail = orderSummary.getCustomer().getEmail();
+        message.setTo(customersMail);
+        message.setSubject(MAIL_SUBJECT_TO_STEFAN);
+        message.setText("some text, will decide later");
         javaMailSender.send(message);
     }
 
-    private void sendMailWithAttachments(MailEntity mailEntityToSend) {
+    private void sendMailNotificationToCustomer(OrderSummary orderSummary) {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         try {
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
-            String[] receiversArray = listConverter.convertListToArray(mailEntityToSend.getReceivers());
-            mimeMessageHelper.setTo(receiversArray);
-            mimeMessageHelper.setSubject(mailEntityToSend.getSubject());
-            mimeMessageHelper.setText(mailEntityToSend.getMessage());
-            addAttachments(mailEntityToSend.getPathToAttachment(), mimeMessageHelper);
+            mimeMessageHelper.setTo("ostap.shevchenko.con@gmail.com");
+            mimeMessageHelper.setSubject(MAIL_SUBJECT_TO_CUSTOMER);
+            mimeMessageHelper.setText("decide later");
 
+            ClassPathResource classPathResource = new ClassPathResource("attachments/Attachment.img");
+            mimeMessageHelper.addAttachment(classPathResource.getFilename(), classPathResource);
             javaMailSender.send(mimeMessage);
         } catch (MessagingException e) {
             log.error("Mime message wasn't sent properly.", e);

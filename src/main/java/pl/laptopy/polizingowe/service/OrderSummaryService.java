@@ -23,7 +23,11 @@ public class OrderSummaryService {
         return orderSummaryList;
     }
 
-    public OrderSummary createOrder(OrderSummary orderSummary) {
+    public OrderSummary saveOrderSummary(OrderSummary orderSummary) {
         return orderSummaryRepository.save(Optional.of(orderSummary).orElseThrow(RuntimeException::new));
+    }
+
+    public void deleteOrderSummaryById(Long orderSummaryId) {
+        orderSummaryRepository.deleteById(orderSummaryId);
     }
 }

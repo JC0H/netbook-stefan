@@ -32,5 +32,5 @@ public class OrderSummary {
 
     @NotEmpty(message = "Please provide a customer.")
     @ManyToOne(cascade = CascadeType.ALL)
-    private Customer customers;
+    private Customer customer;
 }

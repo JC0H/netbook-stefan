@@ -25,4 +25,11 @@ public class ProductService {
         return productListConverter.convertIterableToList(productRepository.findAll());
     }
 
+    public Product saveProduct(Product product) {
+        return productRepository.save(product);
+    }
+
+    public void deleteProduct(Long productId) {
+        productRepository.deleteById(productId);
+    }
 }
