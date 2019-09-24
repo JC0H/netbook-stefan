@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pl.laptopy.polizingowe.model.Product;
 import pl.laptopy.polizingowe.service.ProductService;
-
 import java.util.List;
 import java.util.Objects;
 
