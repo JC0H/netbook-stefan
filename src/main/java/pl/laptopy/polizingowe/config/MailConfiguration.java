@@ -10,14 +10,20 @@ import java.util.Properties;
 @Configuration
 public class MailConfiguration {
 
+    private final PropertiesConfig propertiesConfig;
+
+    public MailConfiguration(pl.laptopy.polizingowe.config.PropertiesConfig propertiesConfig) {
+        this.propertiesConfig = propertiesConfig;
+    }
+
     @Bean
     public JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
 
-        mailSender.setUsername("ostap.shevchenko.con@gmail.com");
-        mailSender.setPassword("andrii2019");
+        mailSender.setUsername(propertiesConfig.getMail());
+        mailSender.setPassword(propertiesConfig.getMailPassword());
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");

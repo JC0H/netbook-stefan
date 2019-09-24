@@ -9,7 +9,7 @@ public class ApiException {
     private final HttpStatus httpStatus;
     private final ZonedDateTime dateStamp;
 
-    public ApiException(String message, HttpStatus httpStatus, ZonedDateTime dateStamp) {
+    ApiException(String message, HttpStatus httpStatus, ZonedDateTime dateStamp) {
         this.message = message;
         this.httpStatus = httpStatus;
         this.dateStamp = dateStamp;

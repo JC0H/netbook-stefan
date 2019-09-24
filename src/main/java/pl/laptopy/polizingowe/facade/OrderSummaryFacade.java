@@ -1,9 +1,8 @@
-package pl.laptopy.polizingowe;
+package pl.laptopy.polizingowe.facade;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import pl.laptopy.polizingowe.model.MailEntity;
-import pl.laptopy.polizingowe.model.OrderSummary;
+import pl.laptopy.polizingowe.entity.OrderSummary;
 import pl.laptopy.polizingowe.service.MailService;
 import pl.laptopy.polizingowe.service.OrderSummaryService;
 

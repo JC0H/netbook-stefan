@@ -1,5 +1,7 @@
 package pl.laptopy.polizingowe.config;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -9,10 +11,14 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import pl.laptopy.polizingowe.entity.Roles;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final PropertiesConfig propertiesConfig;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -37,9 +43,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public UserDetailsService userDetailsService() {
         UserDetails user =
                 User.withDefaultPasswordEncoder()
-                        .username("a")
-                        .password("a")
-                        .roles("ADMIN")
+                        .username(propertiesConfig.getSecurityUsername())
+                        .password(propertiesConfig.getSecurityPassword())
+                        .roles(Roles.ADMIN.name())
                         .build();
 
         return new InMemoryUserDetailsManager(user);
