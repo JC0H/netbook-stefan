@@ -1,29 +1,19 @@
-package pl.laptopy.polizingowe.model;
+package pl.laptopy.polizingowe.dto;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import pl.laptopy.polizingowe.model.ProductDetails;
+
 import java.util.List;
 
-@Entity
-public class Product {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProductDTO {
     private Long Id;
-
-    @Column
-    @NotEmpty(message = "Please provide a brand.")
     private String brand;
-
-    @NotEmpty(message = "Properties field is empty.")
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductDetails> productDetailsList;
 
-    public Product() {
+    public ProductDTO() {
     }
 
-    public Product(@NotEmpty(message = "Please provide a brand.") String brand,
-                   @NotEmpty(message = "Properties field is empty.") List<ProductDetails> productDetailsList) {
+    public ProductDTO(Long id, String brand, List<ProductDetails> productDetailsList) {
+        Id = id;
         this.brand = brand;
         this.productDetailsList = productDetailsList;
     }
