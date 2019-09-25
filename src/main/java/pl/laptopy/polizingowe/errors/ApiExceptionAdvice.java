@@ -9,11 +9,11 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 @RestControllerAdvice
-public class ApiExceptionHandler {
+public class ApiExceptionAdvice {
 
     @ExceptionHandler(value = {ApiRequestException.class})
     public ResponseEntity<Object> handleApiRequestException(ApiRequestException e){
-        HttpStatus badRequest = HttpStatus.BAD_REQUEST;
+        HttpStatus badRequest = HttpStatus.INTERNAL_SERVER_ERROR;
         ApiException apiException = new ApiException(
                 e.getMessage(),
                 badRequest,
@@ -21,5 +21,4 @@ public class ApiExceptionHandler {
         );
         return new ResponseEntity<>(apiException, badRequest);
     }
-
 }

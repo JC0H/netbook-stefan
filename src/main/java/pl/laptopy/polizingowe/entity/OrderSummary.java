@@ -1,4 +1,4 @@
-package pl.laptopy.polizingowe.model;
+package pl.laptopy.polizingowe.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

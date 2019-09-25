@@ -2,7 +2,7 @@ package pl.laptopy.polizingowe.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.laptopy.polizingowe.model.OrderSummary;
+import pl.laptopy.polizingowe.entity.OrderSummary;
 import pl.laptopy.polizingowe.repository.OrderSummaryRepository;
 import pl.laptopy.polizingowe.utils.ListConverter;
 

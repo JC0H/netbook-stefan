@@ -3,10 +3,12 @@ package pl.laptopy.polizingowe.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.laptopy.polizingowe.OrderSummaryFacade;
-import pl.laptopy.polizingowe.model.OrderSummary;
+import pl.laptopy.polizingowe.config.PropertiesConfig;
+import pl.laptopy.polizingowe.entity.OrderSummary;
+import pl.laptopy.polizingowe.facade.OrderSummaryFacade;
 
 import javax.validation.Valid;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -15,6 +17,7 @@ import java.util.List;
 public class OrderSummaryController {
 
     private final OrderSummaryFacade orderSummaryFacade;
+    private final PropertiesConfig propertiesConfig;
 
     @GetMapping
     public List<OrderSummary> findAllOrders() {
