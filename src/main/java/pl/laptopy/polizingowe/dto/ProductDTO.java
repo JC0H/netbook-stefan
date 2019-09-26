@@ -12,6 +12,11 @@ public class ProductDTO {
     public ProductDTO() {
     }
 
+    public ProductDTO(Long id, String brand) {
+        Id = id;
+        this.brand = brand;
+    }
+
     public ProductDTO(Long id, String brand, List<ProductDetails> productDetailsList) {
         Id = id;
         this.brand = brand;

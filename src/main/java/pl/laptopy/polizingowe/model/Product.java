@@ -15,7 +15,7 @@ public class Product {
     @NotEmpty(message = "Please provide a brand.")
     private String brand;
 
-    @NotEmpty(message = "Properties field is empty.")
+   // @NotEmpty(message = "Properties field is empty.")
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductDetails> productDetailsList;
 
@@ -26,6 +26,10 @@ public class Product {
                    @NotEmpty(message = "Properties field is empty.") List<ProductDetails> productDetailsList) {
         this.brand = brand;
         this.productDetailsList = productDetailsList;
+    }
+
+    public Product(Long id) {
+
     }
 
     public Long getId() {

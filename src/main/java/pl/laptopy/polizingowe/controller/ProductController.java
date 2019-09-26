@@ -18,4 +18,19 @@ public class ProductController {
     public List<ProductDTO> getProducts(@RequestParam(value = "brand", required = false) String brand) {
         return Objects.isNull(brand) ? productService.findAll() : productService.findAllByBrand(brand);
     }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ProductDTO saveProduct(@RequestBody ProductDTO dto) {
+        return productService.saveProduct(dto);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ProductDTO updateProduct(@PathVariable Long id, @RequestBody ProductDTO dto) {
+        return productService.updateProduct(dto,id);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public void deleteProduct(@PathVariable Long id) {
+        productService.deleteProduct(id);
+    }
 }
