@@ -2,7 +2,7 @@ package pl.laptopy.polizingowe.facade;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import pl.laptopy.polizingowe.entity.OrderSummary;
+import pl.laptopy.polizingowe.dto.OrderSummaryDto;
 import pl.laptopy.polizingowe.service.MailService;
 import pl.laptopy.polizingowe.service.OrderSummaryService;
 
@@ -15,12 +15,12 @@ public class OrderSummaryFacade {
     private final OrderSummaryService orderSummaryService;
     private final MailService mailService;
 
-    public List<OrderSummary> findAllOrders() {
-        return orderSummaryService.findAllOrdersAndSortByDate();
+    public List<OrderSummaryDto> findAllOrders() {
+        return orderSummaryService.findAllOrders();
     }
 
-    public OrderSummary createOrderAndSendConfirmation(OrderSummary orderSummary) {
-        mailService.sendMailNotification(orderSummary);
-        return orderSummaryService.saveOrderSummary(orderSummary);
+    public OrderSummaryDto createOrderAndSendConfirmation(OrderSummaryDto orderSummaryDto) {
+        mailService.sendMailNotification(orderSummaryDto);
+        return orderSummaryService.saveOrderSummary(orderSummaryDto);
     }
 }

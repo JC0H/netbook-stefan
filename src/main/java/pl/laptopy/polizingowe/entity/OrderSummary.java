@@ -23,14 +23,13 @@ public class OrderSummary {
     private Long id;
 
     @Column(name = "order_date")
-    @NotEmpty
     private Date orderDate;
 
-    @NotEmpty(message = "No products added into order.")
+    private String uuid;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<Product> products;
 
-    @NotEmpty(message = "Please provide a customer.")
     @ManyToOne(cascade = CascadeType.ALL)
     private Customer customer;
 }

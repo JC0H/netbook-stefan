@@ -20,7 +20,7 @@ public class Customer {
     private Long id;
 
     @Column
-    private String username;
+    private String name;
 
     @Column
     private String email;
