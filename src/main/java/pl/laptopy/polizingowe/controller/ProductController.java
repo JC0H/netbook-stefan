@@ -14,12 +14,17 @@ public class ProductController {
 
     private final ProductService productService;
 
+//    @GetMapping
+//    public List<ProductDTO> getProducts(@RequestParam(value = "brand", required = false) String brand) {
+//        return Objects.isNull(brand) ? productService.findAll() : productService.findAllByBrand(brand);
+//    }
+
     @GetMapping
-    public List<ProductDTO> getProducts(@RequestParam(value = "brand", required = false) String brand) {
-        return Objects.isNull(brand) ? productService.findAll() : productService.findAllByBrand(brand);
+    public List<ProductDTO> findAll() {
+        return productService.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public ProductDTO saveProduct(@RequestBody ProductDTO dto) {
         return productService.saveProduct(dto);
     }

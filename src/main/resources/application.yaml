@@ -27,3 +27,6 @@ spring:
     password: sa
     username: sa
     driver-class-name: org.h2.Driver
+
+resource:
+  products: http://localhost:8080/stefan/notebook/products

@@ -1,16 +1,13 @@
 package pl.laptopy.polizingowe.service;
 
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.laptopy.polizingowe.dto.ProductDTO;
-import pl.laptopy.polizingowe.errors.ApiRequestException;
 import pl.laptopy.polizingowe.model.Product;
 import pl.laptopy.polizingowe.repository.ProductRepository;
 import pl.laptopy.polizingowe.utils.ListConverter;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,12 +21,12 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    @Transactional
-    public List<ProductDTO> findAllByBrand(String brand) {
-        return productRepository.findAllByBrand(brand).stream()
-                .map(entity -> new ProductDTO(entity.getId(), entity.getBrand(), entity.getProductDetailsList()))
-                .collect(Collectors.toList());
-    }
+//    @Transactional
+//    public List<ProductDTO> findAllByBrand(String brand) {
+//        return productRepository.findAllByBrand(brand).stream()
+//                .map(entity -> new ProductDTO(entity.getId(), entity.getBrand(), entity.getProductDetailsList()))
+//                .collect(Collectors.toList());
+//    }
 
     @Transactional
     public List<ProductDTO> findAll() {
