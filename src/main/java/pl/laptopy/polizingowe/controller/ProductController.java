@@ -34,7 +34,7 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(productDto);
     }
 
-    @DeleteMapping("${productId}")
+    @DeleteMapping("/{productId}")
     public ResponseEntity deleteProduct(@PathVariable Long productId) {
         productService.deleteProduct(productId);
         ProductDto deletedProduct = productService.findProductById(productId);

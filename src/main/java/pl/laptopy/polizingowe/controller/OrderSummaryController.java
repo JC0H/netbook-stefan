@@ -37,7 +37,7 @@ public class OrderSummaryController {
         return ResponseEntity.status(HttpStatus.CREATED).body(orderSummaryDto);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{orderId}")
     public ResponseEntity deleteOrder(@PathVariable Long orderId) {
         orderSummaryFacade.deleteOrder(orderId);
         return new ResponseEntity(HttpStatus.NO_CONTENT);

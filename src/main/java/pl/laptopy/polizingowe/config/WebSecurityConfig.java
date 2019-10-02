@@ -15,10 +15,13 @@ import pl.laptopy.polizingowe.entity.Roles;
 
 @Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor
 public class WebSecurityConfig  {
 
-    private PropertiesConfig propertiesConfig;
+    private final PropertiesConfig propertiesConfig;
+
+    public WebSecurityConfig(PropertiesConfig propertiesConfig) {
+        this.propertiesConfig = propertiesConfig;
+    }
 
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().ignoringAntMatchers("/h2-console/**").disable()
