@@ -1,6 +1,5 @@
 package pl.laptopy.polizingowe.service;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
@@ -12,7 +11,6 @@ import pl.laptopy.polizingowe.config.PropertiesConfig;
 import pl.laptopy.polizingowe.dto.OrderSummaryDto;
 import pl.laptopy.polizingowe.errors.ApiRequestException;
 import pl.laptopy.polizingowe.errors.ErrorCode;
-import pl.laptopy.polizingowe.utils.ListConverter;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -20,15 +18,18 @@ import java.io.File;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 @Slf4j
 public class MailService {
 
     private final JavaMailSender javaMailSender;
-    private final ListConverter listConverter;
     private static final String MAIL_SUBJECT_TO_CUSTOMER = "Your order summary.";
     private static final String MAIL_SUBJECT_TO_STEFAN = "People made an order, please check";
     private final PropertiesConfig propertiesConfig;
+
+    public MailService(JavaMailSender javaMailSender, PropertiesConfig propertiesConfig) {
+        this.javaMailSender = javaMailSender;
+        this.propertiesConfig = propertiesConfig;
+    }
 
     public void sendMailNotification(OrderSummaryDto orderSummaryDto) {
         sendMailNotificationToStefan(orderSummaryDto);

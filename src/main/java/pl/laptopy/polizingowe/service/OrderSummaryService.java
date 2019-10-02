@@ -7,13 +7,11 @@ import pl.laptopy.polizingowe.mapper.OrderSummaryMapper;
 import pl.laptopy.polizingowe.repository.OrderSummaryRepository;
 import pl.laptopy.polizingowe.utils.ListConverter;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@Transactional
 public class OrderSummaryService {
 
     private final OrderSummaryMapper orderSummaryMapper;
