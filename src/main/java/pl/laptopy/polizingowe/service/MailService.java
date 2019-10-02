@@ -9,7 +9,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import pl.laptopy.polizingowe.config.PropertiesConfig;
 import pl.laptopy.polizingowe.dto.OrderSummaryDto;
-import pl.laptopy.polizingowe.errors.ApiRequestException;
+import pl.laptopy.polizingowe.errors.ApiException;
 import pl.laptopy.polizingowe.errors.ErrorCode;
 
 import javax.mail.MessagingException;
@@ -58,7 +58,7 @@ public class MailService {
             javaMailSender.send(mimeMessage);
         } catch (MessagingException e) {
             log.error("Error while sending mail to {}.", orderSummaryDto.getCustomerEmail(), e);
-            throw new ApiRequestException(ErrorCode.MESSAGE_WITH_ATTACHMENTS_EXCEPTION);
+            throw new ApiException(ErrorCode.MESSAGE_WITH_ATTACHMENTS_EXCEPTION);
         }
     }
 
@@ -69,7 +69,7 @@ public class MailService {
                 mimeMessageHelper.addAttachment(file.getFilename(), file);
             } catch (MessagingException e) {
                 log.error("Attachment is incorrect: {} .", path, e);
-                throw new ApiRequestException(ErrorCode.MESSAGE_WITH_ATTACHMENTS_EXCEPTION);
+                throw new ApiException(ErrorCode.MESSAGE_WITH_ATTACHMENTS_EXCEPTION);
             }
         }
     }

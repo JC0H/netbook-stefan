@@ -2,7 +2,8 @@ package pl.laptopy.polizingowe.errors;
 
 public enum ErrorCode {
     NO_BRAND_FOUND("Nie znaleziono danej marki laptopa"),
-    MESSAGE_WITH_ATTACHMENTS_EXCEPTION("Message with attachments wasn't sent properly.");
+    MESSAGE_WITH_ATTACHMENTS_EXCEPTION("Message with attachments wasn't sent properly."),
+    NO_PRODUCT_WITH_GIVEN_ID("No Product with given ID.");
 
     private final String value;
 

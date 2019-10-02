@@ -1,6 +1,5 @@
 package pl.laptopy.polizingowe.facade;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import pl.laptopy.polizingowe.dto.OrderSummaryDto;
 import pl.laptopy.polizingowe.service.MailService;
@@ -9,11 +8,15 @@ import pl.laptopy.polizingowe.service.OrderSummaryService;
 import java.util.List;
 
 @Component
-@RequiredArgsConstructor
 public class OrderSummaryFacade {
 
     private final OrderSummaryService orderSummaryService;
     private final MailService mailService;
+
+    public OrderSummaryFacade(OrderSummaryService orderSummaryService, MailService mailService) {
+        this.orderSummaryService = orderSummaryService;
+        this.mailService = mailService;
+    }
 
     public List<OrderSummaryDto> findAllOrders() {
         return orderSummaryService.findAllOrders();
