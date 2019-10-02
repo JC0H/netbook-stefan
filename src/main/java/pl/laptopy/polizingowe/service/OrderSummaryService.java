@@ -41,4 +41,9 @@ public class OrderSummaryService {
     public void deleteOrderSummaryById(Long orderSummaryId) {
         orderSummaryRepository.deleteById(orderSummaryId);
     }
+
+    public void updateOrderSummary(OrderSummaryDto orderSummaryDto) {
+        OrderSummary orderSummaryToUpdate = orderSummaryMapper.mapToOrderSummary(orderSummaryDto);
+        orderSummaryRepository.save(orderSummaryToUpdate);
+    }
 }

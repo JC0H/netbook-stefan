@@ -23,4 +23,12 @@ public class OrderSummaryFacade {
         mailService.sendMailNotification(orderSummaryDto);
         return orderSummaryService.saveOrderSummary(orderSummaryDto);
     }
+
+    public void updateOrder(OrderSummaryDto orderSummaryDto) {
+        orderSummaryService.updateOrderSummary(orderSummaryDto);
+    }
+
+    public void deleteOrder(Long orderSummaryId) {
+        orderSummaryService.deleteOrderSummaryById(orderSummaryId);
+    }
 }

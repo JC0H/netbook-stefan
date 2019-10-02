@@ -1,6 +1,7 @@
 package pl.laptopy.polizingowe.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.laptopy.polizingowe.config.PropertiesConfig;
@@ -27,6 +28,18 @@ public class OrderSummaryController {
     @PostMapping
     public ResponseEntity makeOrder(@Valid @RequestBody OrderSummaryDto orderSummaryDto) {
         OrderSummaryDto createdOrder = orderSummaryFacade.createOrderAndSendConfirmation(orderSummaryDto);
-        return ResponseEntity.status(200).body(createdOrder);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdOrder);
+    }
+
+    @PutMapping
+    public ResponseEntity updateOrder(@Valid @RequestBody OrderSummaryDto orderSummaryDto) {
+        orderSummaryFacade.updateOrder(orderSummaryDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(orderSummaryDto);
+    }
+
+    @DeleteMapping
+    public ResponseEntity deleteOrder(@PathVariable Long orderId) {
+        orderSummaryFacade.deleteOrder(orderId);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }
