@@ -1,6 +1,5 @@
 package pl.laptopy.polizingowe.service;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
@@ -9,11 +8,9 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import pl.laptopy.polizingowe.config.PropertiesConfig;
-import pl.laptopy.polizingowe.entity.Customer;
-import pl.laptopy.polizingowe.entity.OrderSummary;
+import pl.laptopy.polizingowe.dto.OrderSummaryDto;
 import pl.laptopy.polizingowe.errors.ApiRequestException;
 import pl.laptopy.polizingowe.errors.ErrorCode;
-import pl.laptopy.polizingowe.utils.ListConverter;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -21,33 +18,35 @@ import java.io.File;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 @Slf4j
 public class MailService {
 
     private final JavaMailSender javaMailSender;
-    private final ListConverter listConverter;
     private static final String MAIL_SUBJECT_TO_CUSTOMER = "Your order summary.";
     private static final String MAIL_SUBJECT_TO_STEFAN = "People made an order, please check";
     private final PropertiesConfig propertiesConfig;
 
-    public void sendMailNotification(OrderSummary orderSummary) {
-        sendMailNotificationToStefan(orderSummary);
-        sendMailNotificationToCustomer(orderSummary);
+    public MailService(JavaMailSender javaMailSender, PropertiesConfig propertiesConfig) {
+        this.javaMailSender = javaMailSender;
+        this.propertiesConfig = propertiesConfig;
     }
 
-    private void sendMailNotificationToStefan(OrderSummary orderSummary) {
+    public void sendMailNotification(OrderSummaryDto orderSummaryDto) {
+        sendMailNotificationToStefan(orderSummaryDto);
+        sendMailNotificationToCustomer(orderSummaryDto);
+    }
+
+    private void sendMailNotificationToStefan(OrderSummaryDto orderSummaryDto) {
         SimpleMailMessage message = new SimpleMailMessage();
-        String customersMail = orderSummary.getCustomer().getEmail();
+        String customersMail = orderSummaryDto.getCustomerEmail();
         message.setTo(customersMail);
         message.setSubject(MAIL_SUBJECT_TO_STEFAN);
         message.setText("some text, will decide later");
         javaMailSender.send(message);
     }
 
-    private void sendMailNotificationToCustomer(OrderSummary orderSummary) {
+    private void sendMailNotificationToCustomer(OrderSummaryDto orderSummaryDto) {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-        Customer customer = orderSummary.getCustomer();
         try {
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
             mimeMessageHelper.setTo(propertiesConfig.getMail());
@@ -58,7 +57,7 @@ public class MailService {
             mimeMessageHelper.addAttachment(classPathResource.getFilename(), classPathResource);
             javaMailSender.send(mimeMessage);
         } catch (MessagingException e) {
-            log.error("Error while sending mail to {}.", customer.getEmail(), e);
+            log.error("Error while sending mail to {}.", orderSummaryDto.getCustomerEmail(), e);
             throw new ApiRequestException(ErrorCode.MESSAGE_WITH_ATTACHMENTS_EXCEPTION);
         }
     }
