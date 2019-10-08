@@ -16,14 +16,15 @@ import pl.laptopy.polizingowe.entity.Roles;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-public class WebSecurityConfig  {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
     private PropertiesConfig propertiesConfig;
 
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().ignoringAntMatchers("/h2-console/**").disable()
                 .headers().frameOptions().disable()
-                .and().authorizeRequests().antMatchers("/stefan/**").permitAll()
+                .and().authorizeRequests().antMatchers("/api/**").permitAll()
                 .and().authorizeRequests().antMatchers("/admin/**").permitAll()
                 .and().authorizeRequests().antMatchers("/", "/home").permitAll()
                 .and().authorizeRequests().antMatchers("/h2-console/**").permitAll()
