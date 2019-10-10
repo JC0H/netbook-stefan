@@ -1,11 +1,12 @@
 $(document).ready( function () {
-    var table = $('#productsList').DataTable({
-        "sAjaxSource": "/api/stefan/notebook/products",
-        "sAjaxDataProp": "",
-        "order": [[ 0, "asc" ]],
-        "aoColumns": [
-            { "mData": "id"},
-            { "mData": "brand" }
+    console.log("fdscs");
+    // var table = $('#productsList').DataTable({
+    //     "sAjaxSource": "/api/stefan/notebook/products",
+    //     "sAjaxDataProp": "",
+    //     "order": [[ 0, "asc" ]],
+    //     "aoColumns": [
+    //         { "mData": "id"},
+    //         { "mData": "brand" }
             // { "mData": "model" },
             // { "mData": "processor" },
             // { "mData": "graphics" },
@@ -19,6 +20,6 @@ $(document).ready( function () {
             // { "mData": "usb"},
             // { "mData": "additionalInformation" },
             // { "mData": "price" }
-        ]
-    })
+    //     ]
+    // })
 });
