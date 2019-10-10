@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 @RestController
-@RequestMapping(value = "${api.stefan.notebook}ą" + "/products")
+@RequestMapping(value = "${api.stefan.notebook}" + "/products")
 @RequiredArgsConstructor
 public class ProductController {
 
