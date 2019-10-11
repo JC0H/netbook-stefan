@@ -1,6 +1,7 @@
 $(document).ready(
     function () {
-    console.log("in table function");
+      console.log("in table function");
+
     // var table = $('#employeesTable').DataTable({
     //     "sAjaxSource": "/api/stefan/notebook/products",
     //     "sAjaxDataProp": "",

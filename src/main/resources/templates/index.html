@@ -1,69 +1,114 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" />
-    <title>Spring Boot + JPA + Datatables</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
-    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<!--    <script type="text/javascript" src="jsfile.js"></script>-->
-    <script type="text/javascript" src="js/datatable.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.js"></script>
+
+    <script type = "text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                url: "http://localhost:8080/api/stefan/notebook/products",
+                method: "GET",
+                dataType: "json",
+                success: function (data) {
+                    $("#datatable").dataTable({
+                        data: data,
+                        sort: false,
+                        searching: false,
+                        paging: false,
+                        columns: [
+                            {'data': 'brand'},
+                            {'data': 'model'}
+                        ]
+                    })
+                }
+            })
+        })
+    </script>
+<!--    <script>-->
+<!--        function format ( d ) {-->
+<!--            // `d` is the original data object for the row-->
+<!--            return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+-->
+<!--                '<tr>'+-->
+<!--                '<td>Full name:</td>'+-->
+<!--                '<td>'+d.model+'</td>'+-->
+<!--                '</tr>'+-->
+<!--                '<tr>'+-->
+<!--                '<td>Extension number:</td>'+-->
+<!--                '<td>'+d.processor+'</td>'+-->
+<!--                '</tr>'+-->
+<!--                '<tr>'+-->
+<!--                '<td>Extra info:</td>'+-->
+<!--                '<td>And any further details here (images etc)...</td>'+-->
+<!--                '</tr>'+-->
+<!--                '</table>';-->
+<!--        }-->
+<!--        $(document).ready(function() {-->
+<!--            var table = $('#example').DataTable( {-->
+<!--                "ajax": "http://localhost:8080/api/stefan/notebook/products",-->
+<!--                "columns": [-->
+<!--                    {-->
+<!--                        "className":      'details-control',-->
+<!--                        "orderable":      false,-->
+<!--                        "data":           null,-->
+<!--                        "defaultContent": ''-->
+<!--                    },-->
+<!--                    { "data": "graphics" },-->
+<!--                    { "data": "memory" },-->
+<!--                    { "data": "screen" },-->
+<!--                    { "data": "ram" }-->
+<!--                ],-->
+<!--                "order": [[1, 'asc']]-->
+<!--            } );-->
+
+<!--            // Add event listener for opening and closing details-->
+<!--            $('#example tbody').on('click', 'td.details-control', function () {-->
+<!--                var tr = $(this).closest('tr');-->
+<!--                var row = table.row( tr );-->
+
+<!--                if ( row.child.isShown() ) {-->
+<!--                    // This row is already open - close it-->
+<!--                    row.child.hide();-->
+<!--                    tr.removeClass('shown');-->
+<!--                }-->
+<!--                else {-->
+<!--                    // Open this row-->
+<!--                    row.child( format(row.data()) ).show();-->
+<!--                    tr.addClass('shown');-->
+<!--                }-->
+<!--            } );-->
+<!--        } );-->
+<!--    </script>-->
+<!--    <script type="text/javascript" src="js/datatable.js"></script>-->
 </head>
-
 <body>
-<h1>Employees Table</h1>
-<table id="employeesTable" class="display">
-
-    <!-- Header Table -->
-    <thead>
-    <tr>
-        <th>id</th>
-        <th>brand</th>
-        <th>model</th>
-        <th>processor</th>
-        <th>graphics</th>
-        <th>memory</th>
-        <th>screen</th>
-        <th>ram</th>
-        <th>network</th>
-        <th>color</th>
-        <th>weight</th>
-        <th>operatingSystem</th>
-        <th>usb</th>
-        <th>additionalInformation</th>
-        <th>price</th>
-    </tr>
-    </thead>
-    <!-- Footer Table -->
-    <tfoot>
-    <tr>
-        <th>id</th>
-        <th>brand</th>
-        <th>model</th>
-        <th>processor</th>
-        <th>graphics</th>
-        <th>memory</th>
-        <th>screen</th>
-        <th>ram</th>
-        <th>network</th>
-        <th>color</th>
-        <th>weight</th>
-        <th>operatingSystem</th>
-        <th>usb</th>
-        <th>additionalInformation</th>
-        <th>price</th>
-    </tr>
-    </tfoot>
-</table>
-<script type="text/javascript">
-    $(document).ready(
-        function () {
-            console.log("Ostapka wyglian w wikno");
-        }
-    );
-</script>
+<div style = "width: 700px; padding: 5px; border: 1px solid black;">
+    <table id = "datatable">
+        <thead>
+        <tr>
+            <th>brand</th>
+            <th>model</th>
+<!--            <th>processor</th>-->
+<!--            <th>graphics</th>-->
+<!--            <th>memory</th>-->
+<!--            <th>screen</th>-->
+<!--            <th>ram</th>-->
+<!--            <th>network</th>-->
+<!--            <th>color</th>-->
+<!--            <th>weight</th>-->
+<!--            <th>operatingSystem</th>-->
+<!--            <th>usb</th>-->
+<!--            <th>additionalInformation</th>-->
+<!--            <th>price</th>-->
+        </tr>
+        </thead>
+    </table>
+</div>
 </body>
 </html>
