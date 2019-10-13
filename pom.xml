@@ -21,6 +21,7 @@
         <jquery.version>2.1.4</jquery.version>
         <spring.mail.sender.verion>2.0.1.RELEASE</spring.mail.sender.verion>
         <spring.context.support.version>5.1.8.RELEASE</spring.context.support.version>
+        <jqeury.verion>3.2.1</jqeury.verion>
     </properties>
 
     <dependencies>
@@ -28,10 +29,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-security</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
@@ -102,6 +103,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
             <version>${spring.context.support.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>${jquery.version}</version>
         </dependency>
     </dependencies>
 
