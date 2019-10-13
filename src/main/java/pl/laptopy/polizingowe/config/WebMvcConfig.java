@@ -1,10 +1,14 @@
 package pl.laptopy.polizingowe.config;
 
-import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class WebMvcConfig extends WebMvcAutoConfiguration {
+public class WebMvcConfig implements WebMvcConfigurer {
 
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("products");
+    }
 
 }
