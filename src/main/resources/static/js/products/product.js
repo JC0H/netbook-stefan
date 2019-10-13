@@ -18,7 +18,7 @@ var product,
     additionalInformation,
     price,
     products = {},
-    productNumber = 1,
+    rowNumber,
     delimeter = ', ';
 
 function getAllProducts() {
@@ -36,6 +36,7 @@ function getAllProducts() {
 }
 
 function productSuccess(data) {
+    rowNumber = 0;
     $("#products-table").empty();
     $(data).each(function () {
         product = this;
@@ -44,6 +45,7 @@ function productSuccess(data) {
         productDetails = this.productDetailsDtoList;
 
         $(productDetails).each(function () {
+            rowNumber++;
             detailsId = this.id;
             model = this.model;
             processor = this.processor;
@@ -92,34 +94,34 @@ function productSuccess(data) {
                 operatingSystem,
                 usb,
                 additionalInformation,
-                price,
-                productNumber
+                price
             );
-            productNumber++;
         });
     })
 }
 
 function loadProducts(
     brand, detailsId, model, processor, graphics, memory, screen, ram, network, color, weight,
-    operatingSystem, usb, additionalInformation, price, productNumber
+    operatingSystem, usb, additionalInformation, price
 ) {
     var html = '';
     var productTable = $('#products-table');
-    html = "<div id='products-row' style='width:150px;height:150px;background:navajowhite;margin-bottom:5px;'>" +
-                "<img src='#' alt='image' style='width:20px;height:20px;align:center'>" +
-                "<div id='product-description'>" +
-                    brand + delimeter + model + delimeter +
-                    processor + delimeter + graphics + delimeter + ram + delimeter +
-                    operatingSystem + delimeter + price +
-                "</div>" +
+    html += "<div class='product-description" + detailsId + "' style='width:50%;border: 1px solid #dddddd;background:navajowhite'>" +
+                "<img src='../../img/lenovo-laptop-330-a9-8gb-256ssd-w10,42833394161_7.jpg' " +
+                    "alt='image' style='width:50px;height:50px'><br>" +
+                brand + delimeter + model + delimeter +
+                processor + delimeter + graphics + delimeter + ram + delimeter +
+                operatingSystem + delimeter + price +
             "</div>";
-    if(productNumber%2 === 0) html+= "</div>";
     productTable.append(html);
 }
 
 $(document).ready(function () {
         console.log("in table function");
         getAllProducts();
+
+        $("#create-product").click(function () {
+            console.log("clicked");
+        });
     }
 );
