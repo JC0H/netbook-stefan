@@ -1,26 +1,43 @@
 package pl.laptopy.polizingowe.controller;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import pl.laptopy.polizingowe.dto.ProductDto;
-import pl.laptopy.polizingowe.entity.Product;
 import pl.laptopy.polizingowe.service.ProductService;
 
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping(value = "${api.stefan.notebook}" + "/products")
-@RequiredArgsConstructor
+@Slf4j
 public class ProductController {
 
     private final ProductService productService;
 
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
+
     @GetMapping
     public List<ProductDto> getProducts(@RequestParam(value = "brand", required = false) String brand) {
-        return Objects.isNull(brand) ? productService.findAllProducts() : productService.findAllByBrand(brand);
+        List<ProductDto> fetchedProducts = productService.findAllProducts();
+        log.info("Fetched {} products.", fetchedProducts.size());
+        return fetchedProducts;
+    }
+
+    @PostMapping
+    public ResponseEntity saveProduct(@RequestBody String productDto) {
+        log.info("Product crated: {}", productDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(productDto);
+    }
+
+    @DeleteMapping("/{productId}")
+    public ResponseEntity deleteProduct(@PathVariable Long productId) {
+        System.out.println("deleted " + productId);
+//        productService.deleteProduct(productId);
+        return ResponseEntity.accepted()
+                .body("Resource was marked for deletion with id: " + productId);
     }
 }

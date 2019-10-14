@@ -101,27 +101,22 @@ function productSuccess(data) {
 }
 
 function loadProducts(
-    brand, detailsId, model, processor, graphics, memory, screen, ram, network, color, weight,
+    brand, givenProductId, model, processor, graphics, memory, screen, ram, network, color, weight,
     operatingSystem, usb, additionalInformation, price
 ) {
     var html = '';
     var productTable = $('#products-table');
-    html += "<div class='product-description" + detailsId + "' style='width:50%;border: 1px solid #dddddd;background:navajowhite'>" +
-                "<img src='../../img/lenovo-laptop-330-a9-8gb-256ssd-w10,42833394161_7.jpg' " +
-                    "alt='image' style='width:50px;height:50px'><br>" +
-                brand + delimeter + model + delimeter +
-                processor + delimeter + graphics + delimeter + ram + delimeter +
-                operatingSystem + delimeter + price +
-            "</div>";
+    html += "<div class='product-description" + givenProductId + "' style='width:50%;border: 1px solid #dddddd;background:navajowhite'>" +
+        "<img src='../../img/lenovo-laptop-330-a9-8gb-256ssd-w10,42833394161_7.jpg' " +
+        "alt='image' style='width:50px;height:50px'><br>" +
+        brand + delimeter + model + delimeter +
+        processor + delimeter + graphics + delimeter + ram + delimeter +
+        operatingSystem + delimeter + price +
+        "<button id='delete-product' onclick='deleteProductById("+givenProductId+")'>Delete</button>" +
+        "</div>";
     productTable.append(html);
 }
 
 $(document).ready(function () {
-        console.log("in table function");
-        getAllProducts();
-
-        $("#create-product").click(function () {
-            console.log("clicked");
-        });
-    }
-);
+    getAllProducts();
+});
