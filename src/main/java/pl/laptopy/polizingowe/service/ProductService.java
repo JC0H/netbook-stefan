@@ -7,7 +7,10 @@ import pl.laptopy.polizingowe.mapper.ProductMapper;
 import pl.laptopy.polizingowe.repository.ProductRepository;
 import pl.laptopy.polizingowe.utils.ListConverter;
 
+import java.io.ObjectInputStream;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -16,6 +19,7 @@ public class ProductService {
     private final ListConverter<Product> productListConverter;
     private final ProductRepository productRepository;
     private final ProductMapper productMapper;
+    private List<ProductDto> productDtoList;
 
     public ProductService(ListConverter<Product> productListConverter, ProductRepository productRepository, ProductMapper productMapper) {
         this.productListConverter = productListConverter;
@@ -33,19 +37,33 @@ public class ProductService {
     }
 
     public List<ProductDto> findAllProducts() {
-        List<Product> products = productListConverter.convertIterableToList(productRepository.findAll());
-        return products.stream().map(
-                productMapper::mapToProductDto).collect(Collectors.toList()
-        );
+        if(Objects.isNull(productDtoList) || productDtoList.size() < countProducts()) {
+            List<Product> products = productListConverter.convertIterableToList(productRepository.findAll());
+            productDtoList = products.stream().map(
+                    productMapper::mapToProductDto).collect(Collectors.toList()
+            );
+        }
+        return productDtoList;
     }
 
     public ProductDto saveProduct(ProductDto productDto) {
         Product product = productMapper.mapToProduct(productDto);
         Product savedProduct = productRepository.save(product);
+        productDtoList = null;
         return productMapper.mapToProductDto(savedProduct);
     }
 
     public void deleteProduct(Long productId) {
         productRepository.deleteById(productId);
+    }
+
+    public void updateProduct(ProductDto productToUpdate) {
+//        productRepository.save(productMapper.mapToProduct(productToUpdate));
+        System.out.println("ProductUpdated " + productToUpdate.toString());
+    }
+
+    private Long countProducts() {
+        Long dtoListSize = (long) productDtoList.size();
+        return Optional.of(productRepository.count()).orElse(dtoListSize);
     }
 }

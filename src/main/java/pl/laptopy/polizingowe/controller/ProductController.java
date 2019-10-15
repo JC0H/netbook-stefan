@@ -35,9 +35,15 @@ public class ProductController {
 
     @DeleteMapping("/{productId}")
     public ResponseEntity deleteProduct(@PathVariable Long productId) {
-        System.out.println("deleted " + productId);
 //        productService.deleteProduct(productId);
+        log.info("Deleted: " + productId);
         return ResponseEntity.accepted()
                 .body("Resource was marked for deletion with id: " + productId);
+    }
+
+    @PutMapping
+    public ResponseEntity updateProduct(@RequestBody ProductDto productToUpdate) {
+        productService.updateProduct(productToUpdate);
+        return ResponseEntity.accepted().body(productToUpdate);
     }
 }

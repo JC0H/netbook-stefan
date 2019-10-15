@@ -112,7 +112,8 @@ function loadProducts(
         brand + delimeter + model + delimeter +
         processor + delimeter + graphics + delimeter + ram + delimeter +
         operatingSystem + delimeter + price +
-        "<button id='delete-product' onclick='deleteProductById("+givenProductId+")'>Delete</button>" +
+        "<button id='delete-product' onclick='deleteProductById(" + givenProductId + ")'>Delete</button>" +
+        "<button id='delete-product' onclick='updateProduct(" + products[givenProductId] + ")'>Delete</button>" +
         "</div>";
     productTable.append(html);
 }
