@@ -1,12 +1,15 @@
 package pl.laptopy.polizingowe.service;
 
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import pl.laptopy.polizingowe.dto.ProductDto;
 import pl.laptopy.polizingowe.entity.Product;
 import pl.laptopy.polizingowe.mapper.ProductMapper;
 import pl.laptopy.polizingowe.repository.ProductRepository;
 import pl.laptopy.polizingowe.utils.ListConverter;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 

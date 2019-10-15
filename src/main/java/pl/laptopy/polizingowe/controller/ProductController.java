@@ -23,4 +23,6 @@ public class ProductController {
     public List<ProductDto> getProducts(@RequestParam(value = "brand", required = false) String brand) {
         return Objects.isNull(brand) ? productService.findAllProducts() : productService.findAllByBrand(brand);
     }
+
+
 }

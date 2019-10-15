@@ -59,4 +59,6 @@ public class ProductDetails {
 
     @Column(name = "price")
     private double price;
+
+    private String profilePicPath;
 }
