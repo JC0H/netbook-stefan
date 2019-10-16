@@ -26,10 +26,11 @@ import java.nio.file.StandardCopyOption;
 public class FileStorageService {
 
     private final Path fileStorageLocation;
-
+    private final FileStorageProperties fileStorageProperties;
     @Autowired
-    public FileStorageServiceImpl(FileStorageProperties fileStorageProperties) {
-        this.fileStorageLocation = Paths.get(fileStorageProperties.getUploadDir()).toAbsolutePath().normalize();
+    public FileStorageService(FileStorageProperties fileStorageProperties) {
+        this.fileStorageProperties = fileStorageProperties;
+        this.fileStorageLocation = Paths.get(this.fileStorageProperties.getUploadDir()).toAbsolutePath().normalize();
 
         try {
             Files.createDirectories(this.fileStorageLocation);

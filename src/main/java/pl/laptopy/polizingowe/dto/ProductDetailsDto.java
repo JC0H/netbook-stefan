@@ -62,4 +62,6 @@ public class ProductDetailsDto {
     @NotEmpty(message = "Please provide information about price.")
     @Min(100)
     private double price;
+
+    private String profilePicPath;
 }

@@ -52,7 +52,7 @@
 </div>
 <script>
     function getEmployeeDetails() {
-        $.ajax({url: "/employees", success: function(result){
+        $.ajax({url: "/api/stefan/notebook/products/employees", success: function(result){
                 $(".table tbody").html('');
                 if(result.length>0) {
                     $.each(result, function( index, value ) {
