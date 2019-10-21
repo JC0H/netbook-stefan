@@ -1,4 +1,4 @@
-package pl.laptopy.polizingowe.controller;
+package pl.laptopy.polizingowe.rest;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -21,10 +21,15 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<ProductDto> getProducts(@RequestParam(value = "brand", required = false) String brand) {
+    public List<ProductDto> getProducts() {
         List<ProductDto> fetchedProducts = productService.findAllProducts();
         log.info("Fetched {} products.", fetchedProducts.size());
         return fetchedProducts;
+    }
+
+    @GetMapping("/{productId}")
+    public ProductDto getOneProduct(@PathVariable Long productId) {
+        return productService.findOneProduct(productId);
     }
 
     @PostMapping
@@ -43,7 +48,7 @@ public class ProductController {
                 .body("Resource was marked for deletion with id: " + productId);
     }
 
-    @PutMapping
+    @PatchMapping
     public ResponseEntity updateProduct(@RequestBody ProductDto productToUpdate) {
         productService.updateProduct(productToUpdate);
         return ResponseEntity.accepted().body(productToUpdate);

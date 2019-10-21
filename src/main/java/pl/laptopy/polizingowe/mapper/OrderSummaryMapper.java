@@ -7,7 +7,6 @@ import pl.laptopy.polizingowe.entity.Customer;
 import pl.laptopy.polizingowe.entity.OrderSummary;
 import pl.laptopy.polizingowe.entity.Product;
 
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Component

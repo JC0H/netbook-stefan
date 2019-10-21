@@ -1,4 +1,4 @@
-package pl.laptopy.polizingowe.controller;
+package pl.laptopy.polizingowe.rest;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

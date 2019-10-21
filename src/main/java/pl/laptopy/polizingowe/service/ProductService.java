@@ -4,9 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.laptopy.polizingowe.dto.ProductDto;
 import pl.laptopy.polizingowe.entity.Product;
-import pl.laptopy.polizingowe.entity.ProductDetails;
 import pl.laptopy.polizingowe.mapper.ProductMapper;
-import pl.laptopy.polizingowe.repository.ProductDetailsRepository;
 import pl.laptopy.polizingowe.repository.ProductRepository;
 import pl.laptopy.polizingowe.utils.ListConverter;
 
@@ -20,15 +18,17 @@ public class ProductService {
 
     private final ListConverter<Product> productListConverter;
     private final ProductRepository productRepository;
-    private final ProductDetailsRepository productDetailsRepository;
     private final ProductMapper productMapper;
     private List<ProductDto> productDtoList;
 
-    public ProductService(ListConverter<Product> productListConverter, ProductRepository productRepository, ProductDetailsRepository productDetailsRepository, ProductMapper productMapper) {
+    public ProductService(ListConverter<Product> productListConverter, ProductRepository productRepository, ProductMapper productMapper) {
         this.productListConverter = productListConverter;
         this.productRepository = productRepository;
-        this.productDetailsRepository = productDetailsRepository;
         this.productMapper = productMapper;
+    }
+
+    public ProductDto findOneProduct(Long productId) {
+        return productMapper.mapToProductDto(productRepository.findById(productId).orElseThrow(() -> new RuntimeException("no product with ID")));
     }
 
     public List<ProductDto> findAllByBrand(String brand) {
@@ -58,18 +58,14 @@ public class ProductService {
     }
 
     @Transactional
-    public void deleteProduct(Long detailsId) {
-        ProductDetails productDetails = productDetailsRepository.findById(detailsId).orElseThrow(RuntimeException::new);
-        productDetails.setProduct(null);
-        productDetailsRepository.deleteById(detailsId);
+    public void deleteProduct(Long productId) {
+       productRepository.deleteById(productId);
     }
 
+    @Transactional
     public void updateProduct(ProductDto productToUpdate) {
-//        productRepository.save(productMapper.mapToProduct(productToUpdate));
-        System.out.println("ProductUpdated " + productToUpdate.toString());
+        productRepository.save(productMapper.mapToProduct(productToUpdate));
     }
-
-    public ProductDto
 
     private Long countProducts() {
         Long dtoListSize = (long) productDtoList.size();

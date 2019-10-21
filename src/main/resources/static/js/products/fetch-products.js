@@ -1,8 +1,5 @@
-var product,
-    productDetails,
-    productId,
+var productId,
     brand,
-    detailsId,
     model,
     processor,
     graphics,
@@ -17,7 +14,6 @@ var product,
     usb,
     additionalInformation,
     price,
-    products = {},
     rowNumber,
     delimiter = ', ';
 
@@ -39,83 +35,57 @@ function productSuccess(data) {
     rowNumber = 0;
     $("#products-table").empty();
     $(data).each(function () {
-        product = this;
         productId = this.id;
-        brand = product.brand;
-        productDetails = this.productDetails;
+        brand = this.brand;
+        model = this.model;
+        processor = this.processor;
+        graphics = this.graphics;
+        memory = this.memory;
+        screen = this.screen;
+        ram = this.ram;
+        network = this.network;
+        color = this.color;
+        weight = this.weight;
+        operatingSystem = this.operatingSystem;
+        usb = this.usb;
+        additionalInformation = this.additionalInformation;
+        price = this.price;
 
-        $(productDetails).each(function () {
-            rowNumber++;
-            detailsId = this.id;
-            model = this.model;
-            processor = this.processor;
-            graphics = this.graphics;
-            memory = this.memory;
-            screen = this.screen;
-            ram = this.ram;
-            network = this.network;
-            color = this.color;
-            weight = this.weight;
-            operatingSystem = this.operatingSystem;
-            usb = this.usb;
-            additionalInformation = this.additionalInformation;
-            price = this.price;
-
-            products[detailsId] = {
-                productId: productId,
-                brand: brand,
-                detailsId: detailsId,
-                model: model,
-                processor: processor,
-                graphics: graphics,
-                memory: memory,
-                screen: screen,
-                ram: ram,
-                network: network,
-                color: color,
-                weight: weight,
-                operatingSystem: operatingSystem,
-                usb: usb,
-                additionalInformation: additionalInformation,
-                price: price
-            };
-            loadProducts(
-                productId,
-                brand,
-                detailsId,
-                model,
-                processor,
-                graphics,
-                memory,
-                screen,
-                ram,
-                network,
-                color,
-                weight,
-                operatingSystem,
-                usb,
-                additionalInformation,
-                price
-            );
-        });
-    })
+        loadProducts(
+            productId,
+            brand,
+            model,
+            processor,
+            graphics,
+            memory,
+            screen,
+            ram,
+            network,
+            color,
+            weight,
+            operatingSystem,
+            usb,
+            additionalInformation,
+            price
+        );
+    });
 }
 
 function loadProducts(productId,
-    brand, detailsId, model, processor, graphics, memory, screen, ram, network, color, weight,
-    operatingSystem, usb, additionalInformation, price
+                      brand, model, processor, graphics, memory, screen, ram, network, color, weight,
+                      operatingSystem, usb, additionalInformation, price
 ) {
     var html = '';
     var productTable = $('#products-table');
-    html += "<div class='product-description" + detailsId + "' style='width:50%;border: 1px solid #dddddd;background:navajowhite'>" +
+    html += "<div class='product-description" + productId + "' style='width:50%;border: 1px solid #dddddd;background:navajowhite'>" +
         "<img src='../../img/lenovo-laptop-330-a9-8gb-256ssd-w10,42833394161_7.jpg' " +
         "alt='image' style='width:50px;height:50px'><br>" +
         brand + delimiter + model + delimiter +
         processor + delimiter + graphics + delimiter + ram + delimiter +
         operatingSystem + delimiter + price +
-        "<button id='delete-product' onclick='deleteProductById(" + detailsId + ")'>Delete</button>" +
-        "<button id='update-product' class='update-product-class' onclick='updateProduct("+detailsId+")'>Update</button>" +
-    "</div>";
+        "<button id='delete-product' class='delete-product-class' onclick='deleteProductById(" + productId + ")'>Delete</button>" +
+        "<button id='update-product' class='update-product-class' onclick='findProductToUpdate(" + productId + ")'>Update</button>" +
+        "</div>";
     productTable.append(html);
 }
 

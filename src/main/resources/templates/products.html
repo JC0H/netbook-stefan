@@ -25,6 +25,9 @@
     <form>
         <table>
             <tr>
+                <td><input type="text" id="product-id-input" hidden=hidden></td>
+            </tr>
+            <tr>
                 <td><label for="brand-input">Brand:</label></td>
                 <td><input type="text" id="brand-input"></td>
             </tr>
@@ -85,7 +88,10 @@
                 <td><input type="text" id="price-input"></td>
             </tr>
             <tr>
-                <td><input type="button" id="save-product-btn" value="Save" style="background-color: #4CAF50;"></td>
+                <td>
+                    <input type="button" id="save-product-btn" value="Save" style="background-color: #4CAF50;">
+                    <input type="button" id="update-product-btn" value="Update" style="background-color: #4CAF50;">
+                </td>
                 <td><input type="button" id="cancel-btn" value="Cancel" style="background-color: #761c19;"></td>
             </tr>
         </table>
