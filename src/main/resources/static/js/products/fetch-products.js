@@ -19,7 +19,7 @@ var product,
     price,
     products = {},
     rowNumber,
-    delimeter = ', ';
+    delimiter = ', ';
 
 function getAllProducts() {
     $.ajax({
@@ -42,7 +42,7 @@ function productSuccess(data) {
         product = this;
         productId = this.id;
         brand = product.brand;
-        productDetails = this.productDetailsDtoList;
+        productDetails = this.productDetails;
 
         $(productDetails).each(function () {
             rowNumber++;
@@ -80,6 +80,7 @@ function productSuccess(data) {
                 price: price
             };
             loadProducts(
+                productId,
                 brand,
                 detailsId,
                 model,
@@ -100,21 +101,21 @@ function productSuccess(data) {
     })
 }
 
-function loadProducts(
-    brand, givenProductId, model, processor, graphics, memory, screen, ram, network, color, weight,
+function loadProducts(productId,
+    brand, detailsId, model, processor, graphics, memory, screen, ram, network, color, weight,
     operatingSystem, usb, additionalInformation, price
 ) {
     var html = '';
     var productTable = $('#products-table');
-    html += "<div class='product-description" + givenProductId + "' style='width:50%;border: 1px solid #dddddd;background:navajowhite'>" +
+    html += "<div class='product-description" + detailsId + "' style='width:50%;border: 1px solid #dddddd;background:navajowhite'>" +
         "<img src='../../img/lenovo-laptop-330-a9-8gb-256ssd-w10,42833394161_7.jpg' " +
         "alt='image' style='width:50px;height:50px'><br>" +
-        brand + delimeter + model + delimeter +
-        processor + delimeter + graphics + delimeter + ram + delimeter +
-        operatingSystem + delimeter + price +
-        "<button id='delete-product' onclick='deleteProductById(" + givenProductId + ")'>Delete</button>" +
-        "<button id='delete-product' onclick='updateProduct(" + products[givenProductId] + ")'>Delete</button>" +
-        "</div>";
+        brand + delimiter + model + delimiter +
+        processor + delimiter + graphics + delimiter + ram + delimiter +
+        operatingSystem + delimiter + price +
+        "<button id='delete-product' onclick='deleteProductById(" + detailsId + ")'>Delete</button>" +
+        "<button id='update-product' class='update-product-class' onclick='updateProduct("+detailsId+")'>Update</button>" +
+    "</div>";
     productTable.append(html);
 }
 

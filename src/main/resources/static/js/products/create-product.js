@@ -1,20 +1,34 @@
 function saveProduct(brand, model, processor, graphics, memory, screen, ram,
                      network, color, weight, operatingSystem, usb,
                      additionalInformation, price) {
-    var productDetails = [model, processor, graphics, memory, screen, ram,
-        network, color, weight, operatingSystem, usb, additionalInformation, price];
+    var productDetailsData = {
+        brand: brand,
+        productDetails: [{
+            // detailsId: detailsId,
+            model: model,
+            processor: processor,
+            graphics: graphics,
+            memory: memory,
+            screen: screen,
+            ram: ram,
+            network: network,
+            color: color,
+            weight: weight,
+            operatingSystem: operatingSystem,
+            usb: usb,
+            additionalInformation: additionalInformation,
+            price: price
+        }]
+    };
+    var data2send = JSON.stringify(productDetailsData);
     $.ajax({
         type: "POST",
         contentType: "application/json",
         url: "api/stefan/notebook/products",
-        data: JSON.stringify(
-            {
-                'brand': brand,
-                'productDetailsDto': productDetails
-            }),
+        data: data2send,
         timeout: 5000,
         success: function () {
-            alert("success, created " + model);
+            location.reload();
         },
         error: function () {
             alert("shit")
@@ -71,7 +85,5 @@ $(document).ready(function () {
         saveProduct(brand, model, processor, graphics, memory, screen, ram, network,
             color, weight, operatingSystem, usb, additionalInformation, price
         );
-        // location.reload();
-
     });
 });

@@ -28,14 +28,16 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity saveProduct(@RequestBody String productDto) {
+    public ResponseEntity saveProduct(@RequestBody ProductDto productDto) {
         log.info("Product crated: {}", productDto);
+        System.out.println(productDto.toString());
+        productService.saveProduct(productDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(productDto);
     }
 
     @DeleteMapping("/{productId}")
     public ResponseEntity deleteProduct(@PathVariable Long productId) {
-//        productService.deleteProduct(productId);
+        productService.deleteProduct(productId);
         log.info("Deleted: " + productId);
         return ResponseEntity.accepted()
                 .body("Resource was marked for deletion with id: " + productId);

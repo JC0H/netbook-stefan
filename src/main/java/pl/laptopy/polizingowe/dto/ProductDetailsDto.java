@@ -49,7 +49,7 @@ public class ProductDetailsDto {
     private String color;
 
     @NotEmpty(message = "Please provide information about weight.")
-    private double weight;
+    private String weight;
 
     @NotEmpty(message = "Please provide information about OS.")
     private String operatingSystem;
@@ -61,5 +61,5 @@ public class ProductDetailsDto {
 
     @NotEmpty(message = "Please provide information about price.")
     @Min(100)
-    private double price;
+    private String price;
 }

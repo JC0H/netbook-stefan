@@ -14,8 +14,8 @@ public class ProductMapper {
     public Product mapToProduct(ProductDto productDto) {
         return Product.builder()
                 .brand(productDto.getBrand())
-                .productDetailsList(
-                        productDto.getProductDetailsDtoList().stream()
+                .productDetails(
+                        productDto.getProductDetails().stream()
                                 .map(this::mapToProductDetails)
                                 .collect(Collectors.toList())
                 )
@@ -25,8 +25,8 @@ public class ProductMapper {
     public ProductDto mapToProductDto(Product product) {
         return ProductDto.builder()
                 .brand(product.getBrand())
-                .productDetailsDtoList(
-                        product.getProductDetailsList().stream()
+                .productDetails(
+                        product.getProductDetails().stream()
                                 .map(this::mapToProductDetailsDto)
                                 .collect(Collectors.toList())
                 )

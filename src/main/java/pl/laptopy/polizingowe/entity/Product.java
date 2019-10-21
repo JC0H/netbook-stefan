@@ -24,6 +24,6 @@ public class Product {
     private String brand;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProductDetails> productDetailsList;
+    private List<ProductDetails> productDetails;
 
 }

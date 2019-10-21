@@ -6,8 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Entity
 @Data
@@ -46,7 +45,7 @@ public class ProductDetails {
     private String color;
 
     @Column(name = "weight")
-    private double weight;
+    private String weight;
 
     @Column(name = "operatingSystem")
     private String operatingSystem;
@@ -58,5 +57,8 @@ public class ProductDetails {
     private String additionalInformation;
 
     @Column(name = "price")
-    private double price;
+    private String price;
+
+    @ManyToOne
+    private Product product;
 }

@@ -24,5 +24,5 @@ public class ProductDto {
     private String brand;
 
     @NotEmpty(message = "Properties field is empty.")
-    private List<ProductDetailsDto> productDetailsDtoList;
+    private List<ProductDetailsDto> productDetails;
 }
