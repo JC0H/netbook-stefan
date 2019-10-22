@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Stefan</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/jquery-ui.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="js/products/delete-product.js"></script>
+    <script type="text/javascript" src="js/products/fetch-products.js"></script>
+    <script type="text/javascript" src="js/products/create-product.js"></script>
+    <script type="text/javascript" src="js/products/update-product.js"></script>
+</head>
+<body>
+<h1>Products</h1>
+<div id="products-table" style="display: flex; flex-wrap: wrap">
+</div>
+<button id="create-product-btn">Add new Product</button>
+<div id="add-product-popup" style="display:none;width: 400px; padding: 0.5em;background: #5bc0de;margin: 0 auto">
+    <h4>Add new Product bitch</h4>
+    <form>
+        <table>
+            <tr>
+                <td><input type="text" id="product-id-input" hidden=hidden></td>
+            </tr>
+            <tr>
+                <td><label for="brand-input">Brand:</label></td>
+                <td><input type="text" id="brand-input"></td>
+            </tr>
+            <tr>
+                <td><label for="model-input">Model:</label></td>
+                <td><input type="text" id="model-input"></td>
+            </tr>
+            <tr>
+                <td><label for="processor-input">Processor::</label></td>
+                <td><input type="text" id="processor-input"></td>
+            </tr>
+            <tr>
+                <td><label for="graphics-input">Graphics:</label></td>
+                <td><input type="text" id="graphics-input"></td>
+            </tr>
+            <tr>
+                <td><label for="memory-input">Memory:</label></td>
+                <td><input type="text" id="memory-input"></td>
+            </tr>
+            <tr>
+                <td><label for="screen-input">Screen:</label></td>
+                <td><input type="text" id="screen-input"></td>
+            </tr>
+            <tr>
+                <td><label for="ram-input">RAM:</label></td>
+                <td><input type="text" id="ram-input"></td>
+            </tr>
+            <tr>
+                <td><label for="network-input">Network:</label></td>
+                <td><input type="text" id="network-input"></td>
+            </tr>
+            <tr>
+                <td><label for="color-input">Color:</label></td>
+                <td><input type="text" id="color-input"></td>
+            </tr>
+            <tr>
+                <td><label for="weight-input">Weight:</label></td>
+                <td><input type="text" id="weight-input"></td>
+            </tr>
+            <tr>
+                <td><label for="operatingSystem-input">Operating system:</label></td>
+                <td><input type="text" id="operatingSystem-input"></td>
+            </tr>
+            <tr>
+                <td><label for="usb-input">USB:</label></td>
+                <td><input type="text" id="usb-input"></td>
+            </tr>
+            <tr>
+                <td><label for="image-input">Image:</label></td>
+                <td><input type="file" id="image-input"></td>
+            </tr>
+            <tr>
+                <td><label for="additionalInformation-input">Additional Information:</label></td>
+                <td><input type="text" id="additionalInformation-input"></td>
+            </tr>
+            <tr>
+                <td><label for="price-input">Price:</label></td>
+                <td><input type="text" id="price-input"></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" id="save-product-btn" value="Save" style="background-color: #4CAF50;">
+                    <input type="button" id="update-product-btn" value="Update" style="background-color: #4CAF50;">
+                </td>
+                <td><input type="button" id="cancel-btn" value="Cancel" style="background-color: #761c19;"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
