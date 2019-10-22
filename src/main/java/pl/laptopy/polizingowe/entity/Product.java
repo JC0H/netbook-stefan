@@ -60,4 +60,7 @@ public class Product {
     @Column(name = "price")
     private String price;
 
+    @Column(name = "image")
+    private String productPicPath;
+
 }

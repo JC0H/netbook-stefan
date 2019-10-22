@@ -66,4 +66,7 @@ public class ProductDto {
     @NotEmpty(message = "Please provide information about price.")
     @Min(100)
     private String price;
+
+    @NotEmpty(message = "Please add photo of product")
+    private String productPicPath;
 }

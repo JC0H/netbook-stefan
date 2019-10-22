@@ -24,6 +24,7 @@ public class ProductMapper {
                 .usb(productDto.getUsb())
                 .additionalInformation(productDto.getAdditionalInformation())
                 .price(productDto.getPrice())
+                .productPicPath(productDto.getProductPicPath())
                 .build();
     }
 
@@ -44,6 +45,7 @@ public class ProductMapper {
                 .usb(product.getUsb())
                 .additionalInformation(product.getAdditionalInformation())
                 .price(product.getPrice())
+                .productPicPath(product.getProductPicPath())
                 .build();
     }
 }
