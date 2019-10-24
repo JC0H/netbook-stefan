@@ -62,5 +62,4 @@ public class Product {
 
     @Column(name = "image")
     private String productPicPath;
-
 }

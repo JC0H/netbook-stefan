@@ -2,7 +2,7 @@ package pl.laptopy.polizingowe.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix = "file")
+@ConfigurationProperties(prefix = AppConstants.FILE_PROPERTIES_PREFIX)
 public class FileStorageProperties {
     private String uploadDir;
 
