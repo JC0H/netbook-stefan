@@ -11,6 +11,8 @@ spring:
     hibernate:
       ddl-auto: update
     database-platform: org.hibernate.dialect.H2Dialect
+  resources:
+    add-mappings: true
   mail:
     host: smtp.gmail.com
     port: 587

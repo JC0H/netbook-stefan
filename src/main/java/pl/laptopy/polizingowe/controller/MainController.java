@@ -13,4 +13,9 @@ public class MainController {
         return "products";
     }
 
+    @GetMapping(value = "index")
+    public String index() {
+        return "index";
+    }
+
 }
