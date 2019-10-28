@@ -1,103 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <title>Stefan</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/jquery-ui.min.js" type="text/javascript"></script>
-
-    <script type="text/javascript" src="js/products/delete-product.js"></script>
-    <script type="text/javascript" src="js/products/fetch-products.js"></script>
-    <script type="text/javascript" src="js/products/create-product.js"></script>
-    <script type="text/javascript" src="js/products/update-product.js"></script>
+    <title>File Upload Demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>Products</h1>
-<div id="products-table" style="display: flex; flex-wrap: wrap"></div>
-
-<button id="create-product-btn">Add new Product</button>
-<div id="add-product-popup" style="display:none;width: 400px; padding: 0.5em;background: #5bc0de;margin: 0 auto">
-    <h4>Add new Product bitch</h4>
-    <form>
-        <table>
-            <tr>
-                <td><input type="text" id="product-id-input" hidden=hidden></td>
-            </tr>
-            <tr>
-                <td><label for="brand-input">Brand:</label></td>
-                <td><input type="text" id="brand-input"></td>
-            </tr>
-            <tr>
-                <td><label for="model-input">Model:</label></td>
-                <td><input type="text" id="model-input"></td>
-            </tr>
-            <tr>
-                <td><label for="processor-input">Processor::</label></td>
-                <td><input type="text" id="processor-input"></td>
-            </tr>
-            <tr>
-                <td><label for="graphics-input">Graphics:</label></td>
-                <td><input type="text" id="graphics-input"></td>
-            </tr>
-            <tr>
-                <td><label for="memory-input">Memory:</label></td>
-                <td><input type="text" id="memory-input"></td>
-            </tr>
-            <tr>
-                <td><label for="screen-input">Screen:</label></td>
-                <td><input type="text" id="screen-input"></td>
-            </tr>
-            <tr>
-                <td><label for="ram-input">RAM:</label></td>
-                <td><input type="text" id="ram-input"></td>
-            </tr>
-            <tr>
-                <td><label for="network-input">Network:</label></td>
-                <td><input type="text" id="network-input"></td>
-            </tr>
-            <tr>
-                <td><label for="color-input">Color:</label></td>
-                <td><input type="text" id="color-input"></td>
-            </tr>
-            <tr>
-                <td><label for="weight-input">Weight:</label></td>
-                <td><input type="text" id="weight-input"></td>
-            </tr>
-            <tr>
-                <td><label for="operatingSystem-input">Operating system:</label></td>
-                <td><input type="text" id="operatingSystem-input"></td>
-            </tr>
-            <tr>
-                <td><label for="usb-input">USB:</label></td>
-                <td><input type="text" id="usb-input"></td>
-            </tr>
-            <tr>
-                <td><label for="image-input">Image:</label></td>
-                <td><input type="text" id="productPicPath-input"></td>
-                <td><input type="file" id="image-input"></td>
-            </tr>
-            <tr>
-                <td><label for="additionalInformation-input">Additional Information:</label></td>
-                <td><input type="text" id="additionalInformation-input"></td>
-            </tr>
-            <tr>
-                <td><label for="price-input">Price:</label></td>
-                <td><input type="text" id="price-input"></td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="button" id="save-product-btn" value="Save" style="background-color: #4CAF50;">
-                    <input type="button" id="update-product-btn" value="Update" style="background-color: #4CAF50;">
-                </td>
-                <td><input type="button" id="cancel-btn" value="Cancel" style="background-color: #761c19;"></td>
-            </tr>
-        </table>
-    </form>
-</div>
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1>File upload demo</h1>
@@ -108,6 +20,66 @@
     <h1><span class="badge badge-secondary">Add New Employee</span></h1>
     <div class="alert alert-success">File uploaded successfully</div>
     <div class="alert alert-danger">File is not uploaded. Error occurred</div>
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter Employee name" name="name">
+    </div>
+    <div class="form-group">
+        <label for="brand">brand:</label>
+        <input type="text" class="form-control" id="brand" placeholder="Enter Employee brand" name="brand">
+    </div>
+    <div class="form-group">
+        <label for="model">model</label>
+        <input type="text" class="form-control" id="model" placeholder="Enter model" name="model">
+    </div>
+    <div class="form-group">
+        <label for="processor">processor:</label>
+        <input type="text" class="form-control" id="processor" placeholder="Enter Employee processor" name="processor">
+    </div>
+    <div class="form-group">
+        <label for="graphics">graphics:</label>
+        <input type="text" class="form-control" id="graphics" placeholder="Enter graphics" name="graphics">
+    </div>
+    <div class="form-group">
+        <label for="memory">memory:</label>
+        <input type="text" class="form-control" id="memory" placeholder="Enter Employee memory" name="memory">
+    </div>
+    <div class="form-group">
+        <label for="screen">screen:</label>
+        <input type="text" class="form-control" id="screen" placeholder="Enter screen" name="screen">
+    </div>
+    <div class="form-group">
+        <label for="ram">ram:</label>
+        <input type="text" class="form-control" id="ram" placeholder="Enter Employee ram" name="ram">
+    </div>
+    <div class="form-group">
+        <label for="network">network:</label>
+        <input type="text" class="form-control" id="network" placeholder="Enter network" name="network">
+    </div>
+    <div class="form-group">
+        <label for="color">color:</label>
+        <input type="text" class="form-control" id="color" placeholder="Enter Employee color" name="color">
+    </div>
+    <div class="form-group">
+        <label for="weight">weight:</label>
+        <input type="text" class="form-control" id="weight" placeholder="Enter weight" name="weight">
+    </div>
+    <div class="form-group">
+        <label for="operatingSystem">operatingSystem:</label>
+        <input type="text" class="form-control" id="operatingSystem" placeholder="Enter Employee operatingSystem" name="operatingSystem">
+    </div>
+    <div class="form-group">
+        <label for="usb">usb:</label>
+        <input type="text" class="form-control" id="usb" placeholder="Enter usb" name="usb">
+    </div>
+    <div class="form-group">
+        <label for="additionalInformation">additionalInformation:</label>
+        <input type="text" class="form-control" id="additionalInformation" placeholder="Enter Employee additionalInformation" name="additionalInformation">
+    </div>
+    <div class="form-group">
+        <label for="price">price:</label>
+        <input type="text" class="form-control" id="price" placeholder="Enter price" name="price">
+    </div>
     <form id="fileUploadForm">
         <div class="form-group">
             <input type="file" class="form-control-file border" name="file">
@@ -116,7 +88,6 @@
     <button type="button" class="btn btn-primary" id="btnSubmit">Submit</button>
 </div>
 <br/>
-<!--	EMPLOYEE LIST	-->
 <div class="container">
     <h1><span class="badge badge-secondary">Employee(s) List</span></h1>
     <div class="table-responsive">
@@ -124,6 +95,20 @@
             <thead>
             <tr>
                 <th>Id</th>
+                <th>brand</th>
+                <th>model</th>
+                <th>processor</th>
+                <th>graphics</th>
+                <th>memory</th>
+                <th>screen</th>
+                <th>ram</th>
+                <th>network</th>
+                <th>color</th>
+                <th>weight</th>
+                <th>operatingSystem</th>
+                <th>usb</th>
+                <th>additionalInformation</th>
+                <th>price</th>
                 <th>Profile Picture</th>
             </tr>
             </thead>
@@ -134,13 +119,27 @@
 </div>
 <script>
     function getEmployeeDetails() {
-        $.ajax({url: "/api/stefan/notebook/products", success: function(result){
+        $.ajax({url: "/employees", success: function(result){
                 $(".table tbody").html('');
                 if(result.length>0) {
                     $.each(result, function( index, value ) {
-                        var htmlStr = "<tr>" +
-                            "<td>"+result[index].id+"</td>" +
-                            "<td><img src=\""+result[index].profilePicPath+"\"></img></td>" +
+                        var htmlStr =
+                            "<tr><td>"+result[index].id+"</td>" +
+                                "<td>"+result[index].brand+"</td>" +
+                            "<td>"+result[index].model+"</td>" +
+                            "<td>"+result[index].processor+"</td>" +
+                            "<td>"+result[index].graphics+"</td>" +
+                            "<td>"+result[index].memory+"</td>" +
+                            "<td>"+result[index].screen+"</td>" +
+                            "<td>"+result[index].ram+"</td>" +
+                            "<td>"+result[index].network+"</td>" +
+                            "<td>"+result[index].color+"</td>" +
+                            "<td>"+result[index].weight+"</td>" +
+                            "<td>"+result[index].operatingSystem+"</td>" +
+                                "<td>"+result[index].usb+"</td>" +
+                            "<td>"+result[index].additionalInformation+"</td>" +
+                            "<td>"+result[index].price+"</td>" +
+                                "<td><img src=\""+result[index].profilePicPath+"\">" + "</td>" +
                             "</tr>";
                         $(".table tbody").append(htmlStr);
                     });
@@ -157,15 +156,27 @@
             var form = $('#fileUploadForm')[0];
             var data = new FormData(form);
             var jsonDataObj = {
-                "name": $("#name").val(),
-                "designation" : $("#designation").val()
+                "brand": $("#brand").val(),
+                "model": $("#model").val(),
+                "processor": $("#processor").val(),
+                "graphics": $("#graphics").val(),
+                "memory": $("#memory").val(),
+                "screen": $("#screen").val(),
+                "ram": $("#ram").val(),
+                "network": $("#network").val(),
+                "color": $("#color").val(),
+                "weight": $("#weight").val(),
+                "operatingSystem": $("#operatingSystem").val(),
+                "usb": $("#usb").val(),
+                "additionalInformation": $("#additionalInformation").val(),
+                "price": $("#price").val()
             };
             data.append("empJson", JSON.stringify(jsonDataObj));
             $("#btnSubmit").prop("disabled", true);
             $.ajax({
                 type: "POST",
                 enctype: 'multipart/form-data',
-                url: "/api/stefan/notebook/products",
+                url: "/employees",
                 data: data,
                 processData: false,
                 contentType: false,

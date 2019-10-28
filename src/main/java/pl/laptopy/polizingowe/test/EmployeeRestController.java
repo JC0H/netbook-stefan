@@ -28,7 +28,7 @@ public class EmployeeRestController {
     @Autowired
     FileStorageService fileStorageService;
 
-    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @RequestMapping(value = AppConstants.EMPLOYEE_URI, method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public AppResponse createEmployee(
             @RequestParam(value = AppConstants.EMPLOYEE_JSON_PARAM, required = true) String empJson,
             @RequestParam(required = true, value = AppConstants.EMPLOYEE_FILE_PARAM) MultipartFile file)
@@ -37,7 +37,7 @@ public class EmployeeRestController {
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path(AppConstants.DOWNLOAD_PATH)
                 .path(fileName).toUriString();
 
-        Employee employee = new Employee();
+        Employee employee = objectMapper.readValue(empJson, Employee.class);
         employee.setProfilePicPath(fileDownloadUri);
         applicationService.createEmployee(employee);
 
