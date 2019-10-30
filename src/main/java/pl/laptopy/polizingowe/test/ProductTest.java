@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Employee {
+public class ProductTest {
 
     @Id
     @GeneratedValue
@@ -56,12 +56,12 @@ public class Employee {
 
     private String profilePicPath;
 
-    public Employee(Long id, String profilePicPath) {
+    public ProductTest(Long id, String profilePicPath) {
         this.id = id;
         this.profilePicPath = profilePicPath;
     }
 
-    public Employee() {
+    public ProductTest() {
 
     }
 
@@ -83,7 +83,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee [id=" + id +  ", profilePicPath=" + profilePicPath + "]";
+        return "ProductTest [id=" + id +  ", profilePicPath=" + profilePicPath + "]";
     }
 
     public String getBrand() {

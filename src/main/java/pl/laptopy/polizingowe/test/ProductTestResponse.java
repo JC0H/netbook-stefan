@@ -1,15 +1,15 @@
 package pl.laptopy.polizingowe.test;
 
-public class AppResponse {
+public class ProductTestResponse {
 
     private String code;
     private String message;
 
-    public AppResponse() {
+    public ProductTestResponse() {
 
     }
 
-    public AppResponse(String code, String message) {
+    public ProductTestResponse(String code, String message) {
         this.code = code;
         this.message = message;
     }

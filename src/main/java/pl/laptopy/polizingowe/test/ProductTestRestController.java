@@ -19,33 +19,33 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-public class EmployeeRestController {
+public class ProductTestRestController {
 
     @Autowired
-    ApplicationService applicationService;
+    ProductTestService applicationService;
     ObjectMapper objectMapper = new ObjectMapper();
 
     @Autowired
     FileStorageService fileStorageService;
 
     @RequestMapping(value = AppConstants.EMPLOYEE_URI, method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public AppResponse createEmployee(
-            @RequestParam(value = AppConstants.EMPLOYEE_JSON_PARAM, required = true) String empJson,
+    public ProductTestResponse createEmployee(
+            @RequestParam(value = AppConstants.EMPLOYEE_JSON_PARAM, required = true) String prdJson,
             @RequestParam(required = true, value = AppConstants.EMPLOYEE_FILE_PARAM) MultipartFile file)
             throws JsonParseException, JsonMappingException, IOException {
         String fileName = fileStorageService.storeFile(file);
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path(AppConstants.DOWNLOAD_PATH)
                 .path(fileName).toUriString();
 
-        Employee employee = objectMapper.readValue(empJson, Employee.class);
+        ProductTest employee = objectMapper.readValue(prdJson, ProductTest.class);
         employee.setProfilePicPath(fileDownloadUri);
         applicationService.createEmployee(employee);
 
-        return new AppResponse(AppConstants.SUCCESS_CODE, AppConstants.SUCCESS_MSG);
+        return new ProductTestResponse(AppConstants.SUCCESS_CODE, AppConstants.SUCCESS_MSG);
     }
 
     @RequestMapping(value = AppConstants.EMPLOYEE_URI, method = RequestMethod.GET)
-    public List<Employee> getAllEmployees() {
+    public List<ProductTest> getAllEmployees() {
         return applicationService.getAllEmployees();
     }
 

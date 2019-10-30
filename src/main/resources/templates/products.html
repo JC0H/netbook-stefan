@@ -119,7 +119,7 @@
 </div>
 <script>
     function getEmployeeDetails() {
-        $.ajax({url: "/employees", success: function(result){
+        $.ajax({url: "/productTest", success: function(result){
                 $(".table tbody").html('');
                 if(result.length>0) {
                     $.each(result, function( index, value ) {
@@ -171,12 +171,12 @@
                 "additionalInformation": $("#additionalInformation").val(),
                 "price": $("#price").val()
             };
-            data.append("empJson", JSON.stringify(jsonDataObj));
+            data.append("prdJson", JSON.stringify(jsonDataObj));
             $("#btnSubmit").prop("disabled", true);
             $.ajax({
                 type: "POST",
                 enctype: 'multipart/form-data',
-                url: "/employees",
+                url: "/productTest",
                 data: data,
                 processData: false,
                 contentType: false,

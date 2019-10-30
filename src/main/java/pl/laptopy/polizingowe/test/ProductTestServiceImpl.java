@@ -6,19 +6,19 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ApplicationServiceImpl implements ApplicationService {
+public class ProductTestServiceImpl implements ProductTestService {
 
     @Autowired
-    EmployeeRepository employeeRepository;
+    ProductTestRepository employeeRepository;
 
     @Override
-    public Employee createEmployee(Employee employee) {
+    public ProductTest createEmployee(ProductTest employee) {
         return employeeRepository.save(employee);
 
     }
 
     @Override
-    public List<Employee> getAllEmployees() {
+    public List<ProductTest> getAllEmployees() {
         return employeeRepository.findAll();
     }
 
