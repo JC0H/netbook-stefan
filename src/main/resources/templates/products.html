@@ -119,13 +119,13 @@
 </div>
 <script>
     function getEmployeeDetails() {
-        $.ajax({url: "/productTest", success: function(result){
+        $.ajax({url: "/prd", success: function(result){
                 $(".table tbody").html('');
                 if(result.length>0) {
                     $.each(result, function( index, value ) {
                         var htmlStr =
                             "<tr><td>"+result[index].id+"</td>" +
-                                "<td>"+result[index].brand+"</td>" +
+                            "<td>"+result[index].brand+"</td>" +
                             "<td>"+result[index].model+"</td>" +
                             "<td>"+result[index].processor+"</td>" +
                             "<td>"+result[index].graphics+"</td>" +
@@ -136,10 +136,10 @@
                             "<td>"+result[index].color+"</td>" +
                             "<td>"+result[index].weight+"</td>" +
                             "<td>"+result[index].operatingSystem+"</td>" +
-                                "<td>"+result[index].usb+"</td>" +
+                            "<td>"+result[index].usb+"</td>" +
                             "<td>"+result[index].additionalInformation+"</td>" +
                             "<td>"+result[index].price+"</td>" +
-                                "<td><img src=\""+result[index].profilePicPath+"\">" + "</td>" +
+                            "<td><img src=\""+result[index].productPicPath+"\">" + "</td>" +
                             "</tr>";
                         $(".table tbody").append(htmlStr);
                     });
@@ -176,7 +176,7 @@
             $.ajax({
                 type: "POST",
                 enctype: 'multipart/form-data',
-                url: "/productTest",
+                url: "/prd",
                 data: data,
                 processData: false,
                 contentType: false,
