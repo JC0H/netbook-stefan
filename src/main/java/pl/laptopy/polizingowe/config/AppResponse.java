@@ -1,15 +1,14 @@
-package pl.laptopy.polizingowe.test;
+package pl.laptopy.polizingowe.config;
 
-public class ProductTestResponse {
-
+public class AppResponse {
     private String code;
     private String message;
 
-    public ProductTestResponse() {
+    public AppResponse() {
 
     }
 
-    public ProductTestResponse(String code, String message) {
+    public AppResponse(String code, String message) {
         this.code = code;
         this.message = message;
     }
@@ -29,5 +28,4 @@ public class ProductTestResponse {
     public void setMessage(String message) {
         this.message = message;
     }
-
 }
