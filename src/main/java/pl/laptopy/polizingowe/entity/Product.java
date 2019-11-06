@@ -22,12 +22,13 @@ public class Product {
     private String usb;
     private String additionalInformation;
     private String price;
-    private String productPicPath;
+    private String first_picture;
+    private String second_picture;
 
     public Product() {
     }
 
-    public Product(String brand, String model, String processor, String graphics, String memory, String screen, String ram, String network, String color, String weight, String operatingSystem, String usb, String additionalInformation, String price, String productPicPath) {
+    public Product(String brand, String model, String processor, String graphics, String memory, String screen, String ram, String network, String color, String weight, String operatingSystem, String usb, String additionalInformation, String price, String first_picture, String second_picture) {
         this.brand = brand;
         this.model = model;
         this.processor = processor;
@@ -42,7 +43,8 @@ public class Product {
         this.usb = usb;
         this.additionalInformation = additionalInformation;
         this.price = price;
-        this.productPicPath = productPicPath;
+        this.first_picture = first_picture;
+        this.second_picture = second_picture;
     }
 
     public Long getId() {
@@ -165,11 +167,19 @@ public class Product {
         this.price = price;
     }
 
-    public String getProductPicPath() {
-        return productPicPath;
+    public String getFirst_picture() {
+        return first_picture;
     }
 
-    public void setProductPicPath(String productPicPath) {
-        this.productPicPath = productPicPath;
+    public void setFirst_picture(String first_picture) {
+        this.first_picture = first_picture;
+    }
+
+    public String getSecond_picture() {
+        return second_picture;
+    }
+
+    public void setSecond_picture(String second_picture) {
+        this.second_picture = second_picture;
     }
 }

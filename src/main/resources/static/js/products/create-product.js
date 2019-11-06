@@ -4,7 +4,8 @@ function getEmployeeDetails() {
             if(result.length>0) {
                 $.each(result, function( index, value ) {
                     var htmlStr =
-                        "<tr><td>"+result[index].id+"</td>" +
+                        "<tr>" +
+                        "<td>"+result[index].id+"</td>" +
                         "<td>"+result[index].brand+"</td>" +
                         "<td>"+result[index].model+"</td>" +
                         "<td>"+result[index].processor+"</td>" +
@@ -19,7 +20,8 @@ function getEmployeeDetails() {
                         "<td>"+result[index].usb+"</td>" +
                         "<td>"+result[index].additionalInformation+"</td>" +
                         "<td>"+result[index].price+"</td>" +
-                        "<td><img src=\""+result[index].productPicPath+"\">" + "</td>" +
+                        "<td><img src=\""+result[index].first_picture+"\">" + "</td>" +
+                        "<td><img src=\""+result[index].second_picture+"\">" + "</td>" +
                         "</tr>";
                     $(".table tbody").append(htmlStr);
                 });

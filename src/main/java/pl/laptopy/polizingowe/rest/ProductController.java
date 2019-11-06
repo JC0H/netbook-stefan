@@ -34,14 +34,19 @@ public class ProductController {
     @RequestMapping(value = AppConstants.PRODUCTS_URI, method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public AppResponse createProduct(
             @RequestParam(value = AppConstants.EMPLOYEE_JSON_PARAM, required = true) String prdJson,
-            @RequestParam(required = true, value = AppConstants.EMPLOYEE_FILE_PARAM) MultipartFile file)
+            @RequestParam(required = true, value = AppConstants.FIRST_FILE) MultipartFile first_file,
+            @RequestParam(required = true, value = AppConstants.SECOND_FILE) MultipartFile second_file)
             throws JsonParseException, JsonMappingException, IOException {
-        String fileName = fileStorageService.storeFile(file);
-        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path(AppConstants.DOWNLOAD_PATH)
+        String fileName = fileStorageService.storeFile(first_file);
+        String firstFileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path(AppConstants.DOWNLOAD_PATH)
                 .path(fileName).toUriString();
+        String secondFileName = fileStorageService.storeFile(second_file);
+        String secondFileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path(AppConstants.DOWNLOAD_PATH)
+                .path(secondFileName).toUriString();
 
         Product product = objectMapper.readValue(prdJson, Product.class);
-        product.setProductPicPath(fileDownloadUri);
+        product.setFirst_picture(firstFileDownloadUri);
+        product.setSecond_picture(secondFileDownloadUri);
         productService.createProduct(product);
 
         return new AppResponse(AppConstants.SUCCESS_CODE, AppConstants.SUCCESS_MSG);

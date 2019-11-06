@@ -3,7 +3,8 @@ package pl.laptopy.polizingowe.config;
 public class AppConstants {
     public static final String PRODUCTS_URI = "/prd";
     public static final String EMPLOYEE_JSON_PARAM = "prdJson";
-    public static final String EMPLOYEE_FILE_PARAM = "file";
+    public static final String FIRST_FILE = "first_file";
+    public static final String SECOND_FILE = "second_file";
     public static final String SUCCESS_CODE = "PRD-200";
     public static final String SUCCESS_MSG = "ProductTest created successfully";
     public static final String FILE_SEPERATOR = "_";
