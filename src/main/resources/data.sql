@@ -1,75 +1,21 @@
-INSERT INTO PRODUCT ( ID, MODEL, BRAND, PROCESSOR, GRAPHICS, MEMORY, SCREEN, RAM, NETWORK, COLOR, WEIGHT
-                    , OPERATING_SYSTEM, USB
-                    , ADDITIONAL_INFORMATION, PRICE)
-VALUES (1, 'A1','HP', 'Intel Core i5', 'Intel Integrated', 'HD 250', '15.6in 1920x1080', '8GB', 'Wi-Fi|Wi-Fi 80', 'Black',
-        3.200, 'Windows 10',
-        'USB x3', 'Very good', 1000.00);
+insert into product (id, brand) values (1, 'Good Sense Pain and Fever');
+insert into product (id, brand) values (2, 'Comfort');
+insert into product (id, brand) values (3, 'Oxygen');
+insert into product (id, brand) values (4, 'Amazing Face');
+insert into product (id, brand) values (5, 'Advanced relief');
+insert into product (id, brand) values (6, 'Prilocaine Hydrochloride');
+insert into product (id, brand) values (7, 'Tension Headache');
+insert into product (id, brand) values (8, 'Cyclosporine');
+insert into product (id, brand) values (9, 'PHAZYME');
+insert into product (id, brand) values (10, 'Dr Smiths Diaper Rash');
 
-INSERT INTO PRODUCT ( ID, MODEL, BRAND, PROCESSOR, GRAPHICS, MEMORY, SCREEN, RAM, NETWORK, COLOR, WEIGHT
-                    , OPERATING_SYSTEM, USB
-                    , ADDITIONAL_INFORMATION, PRICE)
-VALUES (2, 'A2','HP', 'Intel Core i7', 'Intel x4', 'SSD 126', '12.6in 1600x1280', '16GB', 'Wi-Fi 80/76ZIntegral', 'Black',
-        3.500, 'Windows 10',
-        'USB x3', 'Very good', 1454.00);
-INSERT INTO PRODUCT ( ID, MODEL, BRAND, PROCESSOR, GRAPHICS, MEMORY, SCREEN, RAM, NETWORK, COLOR, WEIGHT
-                    , OPERATING_SYSTEM, USB
-                    , ADDITIONAL_INFORMATION, PRICE)
-VALUES (3, 'A3','Apple', 'Intel Core i3', 'Intel Integrated', 'HD 500', '15.6in 1920x1080', '8GB', 'Wi-Fi|Wi-Fi 80|LP15h',
-        'Grey', 2.200, 'Windows 10',
-        'USB x3', 'Very good', 2040.00);
-INSERT INTO PRODUCT ( ID, MODEL, BRAND, PROCESSOR, GRAPHICS, MEMORY, SCREEN, RAM, NETWORK, COLOR, WEIGHT
-                    , OPERATING_SYSTEM, USB
-                    , ADDITIONAL_INFORMATION, PRICE)
-VALUES (4, 'A4','Apple', 'AMD x4', 'Intel Root l5', 'SSD 126', '15.6in 1920x1080', '8GB', 'Wi-Fi|Wi-Fi 80', 'Black', 1.200,
-        'Linux',
-        'USB x3', 'Very good', 1540.00);
-INSERT INTO PRODUCT ( ID, MODEL, BRAND, PROCESSOR, GRAPHICS, MEMORY, SCREEN, RAM, NETWORK, COLOR, WEIGHT
-                    , OPERATING_SYSTEM, USB
-                    , ADDITIONAL_INFORMATION, PRICE)
-VALUES (5, 'A5','DELL', 'Intel Core i3', 'Intel Integrated', 'HD 500', '15.6in 1920x1080', '8GB', 'Wi-Fi|Wi-Fi 80|LP15h',
-        'Grey', 2.200, 'Windows 10',
-        'USB x3', 'Very good', 2040.00);
-INSERT INTO PRODUCT ( ID, MODEL, BRAND, PROCESSOR, GRAPHICS, MEMORY, SCREEN, RAM, NETWORK, COLOR, WEIGHT
-                    , OPERATING_SYSTEM, USB
-                    , ADDITIONAL_INFORMATION, PRICE)
-VALUES (6, 'A6','Lenovo', 'Intel Core i3', 'Intel Integrated', 'HD 500', '15.6in 1920x1080', '8GB', 'Wi-Fi|Wi-Fi 80|LP15h',
-        'Grey', 2.200, 'Windows 10',
-        'USB x3', 'Very good', 2040.00);
-INSERT INTO PRODUCT ( ID, MODEL, BRAND, PROCESSOR, GRAPHICS, MEMORY, SCREEN, RAM, NETWORK, COLOR, WEIGHT
-                    , OPERATING_SYSTEM, USB
-                    , ADDITIONAL_INFORMATION, PRICE)
-VALUES (7, 'A7','DELL', 'Intel Core i3', 'Intel Integrated', 'HD 500', '15.6in 1920x1080', '8GB', 'Wi-Fi|Wi-Fi 80|LP15h',
-        'Grey', 2.200, 'Windows 10',
-        'USB x3', 'Very good', 2040.00);
-INSERT INTO PRODUCT ( ID, MODEL, BRAND, PROCESSOR, GRAPHICS, MEMORY, SCREEN, RAM, NETWORK, COLOR, WEIGHT
-                   , OPERATING_SYSTEM, USB
-                   , ADDITIONAL_INFORMATION, PRICE)
-VALUES (8, 'A8','Fujitsu', 'Intel Core i3', 'Intel Integrated', 'HD 500', '15.6in 1920x1080', '8GB', 'Wi-Fi|Wi-Fi 80|LP15h',
-        'Grey', 2.200, 'Windows 10',
-        'USB x3', 'Very good', 2040.00);
-INSERT INTO PRODUCT ( ID, MODEL, BRAND, PROCESSOR, GRAPHICS, MEMORY, SCREEN, RAM, NETWORK, COLOR, WEIGHT
-                    , OPERATING_SYSTEM, USB
-                    , ADDITIONAL_INFORMATION, PRICE)
-VALUES (9, 'A9','Fujitsu', 'Intel Core i3', 'Intel Integrated', 'HD 500', '15.6in 1920x1080', '8GB', 'Wi-Fi|Wi-Fi 80|LP15h',
-        'Grey', 2.200, 'Windows 10',
-        'USB x3', 'Very good', 2040.00);
-INSERT INTO PRODUCT ( ID, MODEL, BRAND, PROCESSOR, GRAPHICS, MEMORY, SCREEN, RAM, NETWORK, COLOR, WEIGHT
-                    , OPERATING_SYSTEM, USB
-                    , ADDITIONAL_INFORMATION, PRICE)
-VALUES (10, 'A10','Lenovo', 'Intel Core i3', 'Intel Integrated', 'HD 500', '15.6in 1920x1080', '8GB', 'Wi-Fi|Wi-Fi 80|LP15h',
-        'Grey', 2.200, 'Windows 10',
-        'USB x3', 'Very good', 2040.00);
-
--- INSERT INTO ORDER_SUMMARY (ID, order_date)
--- VALUES (1, '2019-08-20');
--- INSERT INTO ORDER_SUMMARY (ID, order_date)
--- VALUES (2, '2019-08-20');
---
--- INSERT INTO ORDER_SUMMARY_PRODUCTS(ORDER_SUMMARY_ID, PRODUCTS_ID)
--- VALUES (1, 1);
--- INSERT INTO ORDER_SUMMARY_PRODUCTS(ORDER_SUMMARY_ID, PRODUCTS_ID)
--- VALUES (1, 2);
--- INSERT INTO ORDER_SUMMARY_PRODUCTS(ORDER_SUMMARY_ID, PRODUCTS_ID)
--- VALUES (2, 4);
--- INSERT INTO ORDER_SUMMARY_PRODUCTS(ORDER_SUMMARY_ID, PRODUCTS_ID)
--- VALUES (2, 5);
+insert into Details (id, model, processor, graphics, screen, ram, network, color, weight) values (1, 'Sierra 1500', '11-235-6890', 59, 11, 12, '3634743794', 'Puce', 7);
+insert into Details (id, model, processor, graphics, screen, ram, network, color, weight) values (2, 'Envoy', '30-334-1231', 23, 11, 6, '7167078646', 'Teal', 5);
+insert into Details (id, model, processor, graphics, screen, ram, network, color, weight) values (3, 'ES', '42-212-9670', 73, 18, 15, '4726843192', 'Violet', 5);
+insert into Details (id, model, processor, graphics, screen, ram, network, color, weight) values (4, 'Rodeo', '46-528-0514', 67, 9, 15, '7319052636', 'Aquamarine', 5);
+insert into Details (id, model, processor, graphics, screen, ram, network, color, weight) values (5, 'Bronco II', '02-385-4872', 35, 16, 8, '5644101665', 'Khaki', 7);
+insert into Details (id, model, processor, graphics, screen, ram, network, color, weight) values (6, 'Montero Sport', '32-894-9025', 29, 13, 5, '9450010072', 'Turquoise', 5);
+insert into Details (id, model, processor, graphics, screen, ram, network, color, weight) values (7, 'Cobalt', '27-325-1009', 28, 20, 8, '1159552096', 'Turquoise', 6);
+insert into Details (id, model, processor, graphics, screen, ram, network, color, weight) values (8, 'Electra', '35-017-9249', 64, 6, 11, '9592180342', 'Fuscia', 6);
+insert into Details (id, model, processor, graphics, screen, ram, network, color, weight) values (9, 'Bonneville', '67-502-8144', 39, 14, 13, '1280350520', 'Green', 6);
+insert into Details (id, model, processor, graphics, screen, ram, network, color, weight) values (10, 'Nubira', '06-245-0819', 65, 21, 13, '9338883337', 'Mauv', 7);

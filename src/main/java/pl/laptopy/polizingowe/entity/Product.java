@@ -1,17 +1,14 @@
 package pl.laptopy.polizingowe.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
+@Getter
+@Setter
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 public class Product {
 
     @Id
@@ -21,43 +18,12 @@ public class Product {
     @Column
     private String brand;
 
-    @Column(name = "model")
-    private String model;
+    @ManyToMany
+    @JoinTable(name = "product_details",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "details_id"))
+    private Set<Details> details = new HashSet<>();
 
-    @Column(name = "processor")
-    private String processor;
 
-    @Column(name = "graphics")
-    private String graphics;
-
-    @Column(name = "memory")
-    private String memory;
-
-    @Column(name = "screen")
-    private String screen;
-
-    @Column(name = "RAM")
-    private String ram;
-
-    @Column(name = "network")
-    private String network;
-
-    @Column(name = "color")
-    private String color;
-
-    @Column(name = "weight")
-    private String weight;
-
-    @Column(name = "operatingSystem")
-    private String operatingSystem;
-
-    @Column(name = "usb")
-    private String usb;
-
-    @Column(name = "additionalInformation")
-    private String additionalInformation;
-
-    @Column(name = "price")
-    private String price;
 
 }
