@@ -1,6 +1,5 @@
-api:
-  stefan:
-      notebook: api/stefan/notebook
+stefan:
+  notebook: api/stefan/notebook
 spring:
   h2:
     console:
