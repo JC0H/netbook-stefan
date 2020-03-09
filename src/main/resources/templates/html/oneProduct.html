@@ -1,6 +1,5 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>Laptopiki</title>
     <meta charset="utf-8">
@@ -105,8 +104,7 @@
 <div class="container" th:object="${oneProduct}" style="background: brown">
 
     <div class="row">
-     <div class="col-sm-6"><img class="card-img-top img-fluid" src="/templates/img/asd.png" style="width: 18rem"
-                                 alt="Card image cap"></div>
+     <div class="col-sm-6"><img class="card-img-top img-fluid" src="/templates/img/asd.png" style="width: 18rem" alt="Card image cap"></div>
         <div class="col-sm-4">
             <table>
                 <tbody>
@@ -185,12 +183,13 @@
 
 
 <!-- footer -->
-<div class="footer mt-5 container" style="background: blueviolet">
+<div class="footer col-sm-12 my-auto fixed-bottom">
     <div class="row" style="background: yellow">
         <div class="col-sm-4">Wybierz</div>
         <div class="col-sm-4">Oddzwonimy</div>
         <div class="col-sm-4">Dostawimy</div>
-
+    </div>
+    <div class="row">
         <div class="col-sm-4"><p>email : stefan@gmail.com</p>
         </div>
         <div class="col-sm-4"><p>numer: +4877777777</p>
@@ -198,14 +197,17 @@
         <div class="col-sm-4"><p><a href=""><i class="fa fa-facebook-official" style="font-size:36px;color:#3b5998"></i></a>
         </p></div>
         <div class="col-sm-4"></div>
-        <div class="col-sm-4">Administratorem Twoich danych osobowych jest Stefan Production ul. Bukowińska 22A, NIP
+    </div>
+    <div class="row" style="background: violet">
+        <div class="col-sm-12">Administratorem Twoich danych osobowych jest Stefan Production ul. Bukowińska 22A, NIP
             521-380-00-23. Przysługują Ci w związku z tym wszystkie prawa wynikające z ochrony danych osobowych, tj.
             prawo dostępu, sprostowania oraz usunięcia Twoich danych, ograniczenia lub sprzeciwu co do ich
             przetwarzania, prawo do ich przenoszenia, niepodlegania zautomatyzowanemu podejmowaniu decyzji, a także
             prawo wniesienia skargi do organu nadzorczego.
+        </div>
     </div>
 </div>
 
 <!--end footer -->
-</body>
+</div></body>
 </html>

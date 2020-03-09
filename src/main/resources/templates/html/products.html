@@ -28,7 +28,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" style="position: sticky;">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Laptopy polizingowe</a>
+            <a class="navbar-brand" href="/products">Laptopy polizingowe</a>
         </div>
         <ul class="nav navbar-nav">
             <!-- <li class="active"><a href="#">Home</a></li> -->
@@ -37,7 +37,7 @@
                     <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="/products?brand=Acer">Acer</a></li>
-                    <li><a href="/products?brand=Acer">Apple</a></li>
+                    <li><a href="/products?brand=Apple">Apple</a></li>
                     <li><a href="/products?brand=Dell">Dell</a></li>
                     <li><a href="/products?brand=Lenovo">Lenovo</a></li>
                     <li><a href="/products?brand=HP">HP</a></li>
@@ -87,10 +87,11 @@
         <!--  admin  buttons-->
         <ul class="nav navbar-nav navbar-right" sec:authorize="isAuthenticated()">
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dodaj nowy
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dodaj
                     <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="#">Produkt</a></li>
+                    <li><a href="#">Zamowienie</a></li>
                     <li><a href="#">Blog</a></li>
                     <li><a href="#">FAQ</a></li>
                 </ul>
@@ -100,7 +101,6 @@
     </div>
 </nav>
 <!-- end nav bar -->
-
 
 <div class="container">
     <div class="row">
@@ -166,12 +166,19 @@
                         </tbody>
                         <tfoot>
                         <tr>
-                            <td><a href="@{/products/{id}(id = ${product.id})}" class="btn btn-info" role="button">Podglad</a>
+                            <td><a th:href="@{/products/{id}(id = ${product.id})}" class="btn btn-info" role="button">Podglad</a>
                             </td>
                             <td>
-                                <a href="@{/cart/{id}(id = ${product.id})}">
+                                <a th:href="@{/cart/{id}(id = ${product.id})}">
                                     <span class="glyphicon glyphicon-shopping-cart btn btn-warning">Do koszyka</span>
                                 </a>
+                            </td>
+                        </tr>
+                        <tr sec:authorize="isAuthenticated()">
+                            <td><a th:href="@{/admin/products/edit/{id}(id = ${product.id})}" class="btn btn-success" role="button">Edytuj</a>
+                            </td>
+                            <td><a th:href="@{/admin/products/delete/{id}(id = ${product.id})}" class="btn btn-danger" role="button"
+                                   onclick="return confirm('Na pewno chcesz usunac?');">Usun</a>
                             </td>
                         </tr>
                         </tfoot>
