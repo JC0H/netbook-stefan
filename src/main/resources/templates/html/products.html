@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Laptopiki</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style type="text/css">
+    body {
+        background: #00FFFF;
+        padding-top: 60px;
+    }
+
+    @media (max-width: 1440px) {
+        body {
+            padding-top: 0px;
+        }
+    }
+</style>
+<body>
+
+<!-- nav bar -->
+<nav class="navbar navbar-inverse navbar-fixed-top" style="position: sticky;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Laptopy polizingowe</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <!-- <li class="active"><a href="#">Home</a></li> -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Laptopy
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/products?brand=Acer">Acer</a></li>
+                    <li><a href="/products?brand=Acer">Apple</a></li>
+                    <li><a href="/products?brand=Dell">Dell</a></li>
+                    <li><a href="/products?brand=Lenovo">Lenovo</a></li>
+                    <li><a href="/products?brand=HP">HP</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Kontakt</a></li>
+            <li><a href="#">FAQ</a></li>
+        </ul>
+        <form class="navbar-form navbar-left" action="#">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search" name="search" style="width: 15rem">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <ul class="nav navbar-nav navbar-left">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sortowanie
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Domyślne sortowanie</a></li>
+                    <li><a href="#">Sortuj od najnowszych</a></li>
+                    <li><a href="#">Sortuj wg ceny: od najniższej</a></li>
+                    <li><a href="#">Sortuj wg ceny: od najwyższej</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Filtrowanie
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Domyślne sortowanie</a></li>
+                    <li><a href="#">Sortuj od najnowszych</a></li>
+                    <li><a href="#">Sortuj wg ceny: od najniższej</a></li>
+                    <li><a href="#">Sortuj wg ceny: od najwyższej</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" class="btn btn-inverse btn-lg">
+                <span class="glyphicon glyphicon-shopping-cart"></span></a>
+            </li>
+        </ul>
+        <!--  admin  buttons-->
+        <ul class="nav navbar-nav navbar-right" sec:authorize="isAuthenticated()">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dodaj nowy
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Produkt</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </li>
+        </ul>
+        <!--      end  admin  buttons-->
+    </div>
+</nav>
+<!-- end nav bar -->
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4" th:if="${products.empty}">
+            fuck
+        </div>
+        <div class="col-sm-4" th:each="product : ${products}">
+            <div class="card">
+                <img class="card-img-top img-fluid" src="/templates/img/asd.png" style="width: 18rem"
+                     alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title" th:text="${product.brand + ', ' + product.model}"></h4>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>Processor:</td>
+                            <td th:text="${product.processor}"></td>
+                        </tr>
+                        <tr>
+                            <td>ProGrafika:</td>
+                            <td th:text="${product.graphics}"></td>
+                        </tr>
+                        <tr>
+                            <td>Pamiec:</td>
+                            <td th:text="${product.memory}"></td>
+                        </tr>
+                        <tr>
+                            <td>Monitor:</td>
+                            <td th:text="${product.screen}"></td>
+                        </tr>
+                        <tr>
+                            <td>RAM:</td>
+                            <td th:text="${product.ram}"></td>
+                        </tr>
+                        <tr>
+                            <td>Siec:</td>
+                            <td th:text="${product.network}"></td>
+                        </tr>
+                        <tr>
+                            <td>Kolor:</td>
+                            <td th:text="${product.color}"></td>
+                        </tr>
+                        <tr>
+                            <td>Waga:</td>
+                            <td th:text="${product.weight}"></td>
+                        </tr>
+                        <tr>
+                            <td>System operacyjny:</td>
+                            <td th:text="${product.operatingSystem}"></td>
+                        </tr>
+                        <tr>
+                            <td>Wejscia:</td>
+                            <td th:text="${product.usb}"></td>
+                        </tr>
+                        <tr>
+                            <td>Dodatkowe info:</td>
+                            <td th:text="${product.additionalInformation}"></td>
+                        </tr>
+                        <tr>
+                            <td>Cena:</td>
+                            <td th:text="${product.price}" style="color: red"></td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td><a href="@{/products/{id}(id = ${product.id})}" class="btn btn-info" role="button">Podglad</a>
+                            </td>
+                            <td>
+                                <a href="@{/cart/{id}(id = ${product.id})}">
+                                    <span class="glyphicon glyphicon-shopping-cart btn btn-warning">Do koszyka</span>
+                                </a>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- footer -->
+<div class="footer col-sm-12 my-auto fixed-bottom">
+    <div class="row" style="background: yellow">
+        <div class="col-sm-4">Wybierz</div>
+        <div class="col-sm-4">Oddzwonimy</div>
+        <div class="col-sm-4">Dostawimy</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4"><p>email : stefan@gmail.com</p>
+        </div>
+        <div class="col-sm-4"><p>numer: +4877777777</p>
+        </div>
+        <div class="col-sm-4"><p><a href=""><i class="fa fa-facebook-official" style="font-size:36px;color:#3b5998"></i></a>
+        </p></div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row" style="background: violet">
+        <div class="col-sm-12">Administratorem Twoich danych osobowych jest Stefan Production ul. Bukowińska 22A, NIP
+            521-380-00-23. Przysługują Ci w związku z tym wszystkie prawa wynikające z ochrony danych osobowych, tj.
+            prawo dostępu, sprostowania oraz usunięcia Twoich danych, ograniczenia lub sprzeciwu co do ich
+            przetwarzania, prawo do ich przenoszenia, niepodlegania zautomatyzowanemu podejmowaniu decyzji, a także
+            prawo wniesienia skargi do organu nadzorczego.
+        </div>
+    </div>
+</div>
+
+<!--end footer -->
+</body>
+</html>
