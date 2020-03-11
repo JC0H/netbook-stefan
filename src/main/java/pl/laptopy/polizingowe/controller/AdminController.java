@@ -33,4 +33,12 @@ public class AdminController {
         return "html/oneProduct";
     }
 
+
+    @GetMapping("/edit/{productId}")
+    public String updateRecipe(@PathVariable String productId, Model model){
+        model.addAttribute("products", productService.findOneProduct(Long.valueOf(productId)));
+        return  "html/updateProduct";
+    }
+
+
 }
