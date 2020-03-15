@@ -60,6 +60,30 @@ VALUES (10, 'A10','Lenovo', 'Intel Core i3', 'Intel Integrated', 'HD 500', '15.6
         'Grey', 2.200, 'Windows 10',
         'USB x3', 'Very good', 2040.00);
 
+INSERT INTO BLOG (ID, TITLE, CONTENT) VALUES ( 1, 'Title1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' );
+INSERT INTO BLOG (ID, TITLE, CONTENT) VALUES ( 2, 'Title2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' );
+INSERT INTO BLOG (ID, TITLE, CONTENT) VALUES ( 3, 'Title3', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' );
+INSERT INTO BLOG (ID, TITLE, CONTENT) VALUES ( 4, 'Title4', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' );
 -- INSERT INTO ORDER_SUMMARY (ID, order_date)
 -- VALUES (1, '2019-08-20');
 -- INSERT INTO ORDER_SUMMARY (ID, order_date)
