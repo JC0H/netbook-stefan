@@ -18,7 +18,7 @@
 
     @media (max-width: 1440px) {
         body {
-            padding-top: 0px;
+            padding-top: 0;
         }
     }
 </style>
@@ -26,14 +26,14 @@
 <!--nav bar-->
 <div th:replace="fragments/nav-bar :: nav-bar"></div>
 <!-- end navbar -->
+
 <div class="container">
-    <div class="row">
-        <div class="col-sm-4" th:if="${products.empty}">
-            fuck
-        </div>
-        <div class="col-sm-4" th:each="product : ${products}">
-            <div class="card">
-                <img class="card-img-top img-fluid" src="/templates/img/asd.png" style="width: 18rem"
+    <div class="container" th:if="${products.empty}">
+        <h1>Przepraszamy, na razie nie mamy zadnych produktow.</h1>
+    </div>
+    <div class="card-deck">
+            <div class="col-sm-4 card" th:each="product : ${products}">
+                <img class="card-img-top img-fluid" style="width: 18rem"
                      alt="Card image cap">
                 <div class="card-block">
                     <h4 class="card-title" th:text="${product.brand + ', ' + product.model}"></h4>
@@ -44,7 +44,7 @@
                             <td th:text="${product.processor}"></td>
                         </tr>
                         <tr>
-                            <td>ProGrafika:</td>
+                            <td>Grafika:</td>
                             <td th:text="${product.graphics}"></td>
                         </tr>
                         <tr>
@@ -57,7 +57,7 @@
                         </tr>
                         <tr>
                             <td>RAM:</td>
-                            <td th:text="${product.ram}"></td>
+                            <td class="product-ram" th:text="${product.ram}"></td>
                         </tr>
                         <tr>
                             <td>Siec:</td>
@@ -85,7 +85,7 @@
                         </tr>
                         <tr>
                             <td>Cena:</td>
-                            <td th:text="${product.price}" style="color: red"></td>
+                            <td  class="product-price" th:text="${product.price}" style="color: red"></td>
                         </tr>
                         </tbody>
                         <tfoot>
@@ -99,9 +99,11 @@
                             </td>
                         </tr>
                         <tr sec:authorize="isAuthenticated()">
-                            <td><a th:href="@{/admin/products/edit/{id}(id = ${product.id})}" class="btn btn-success" role="button">Edytuj</a>
+                            <td><a th:href="@{/admin/products/edit/{id}(id = ${product.id})}" class="btn btn-success"
+                                   role="button">Edytuj</a>
                             </td>
-                            <td><a th:href="@{/admin/products/delete/{id}(id = ${product.id})}" class="btn btn-danger" role="button"
+                            <td><a th:href="@{/admin/products/delete/{id}(id = ${product.id})}" class="btn btn-danger"
+                                   role="button"
                                    onclick="return confirm('Na pewno chcesz usunac?');">Usun</a>
                             </td>
                         </tr>
@@ -109,11 +111,42 @@
                     </table>
                 </div>
             </div>
-        </div>
     </div>
 </div>
 
 
 <div th:replace="fragments/footer :: footer"></div>
+
+<script type="application/javascript">
+    $(document).ready(function () {
+        $('#sort-small-price').click(function () {
+            console.log("sort");
+            $(".card-deck .card").sort(function (a, b) {
+                var a = parseInt($(a).find(".product-price").text());
+                var b = parseInt($(b).find(".product-price").text());
+                console.log("a=" + a + ", b= " + b);
+                return a > b ? 1 : -1;
+            }).appendTo(".card-deck");
+        });
+
+        $('#sort-big-price').click(function () {
+            $('.card-deck .card').sort(function (a, b) {
+                var a = parseInt($(a).find(".product-price").text());
+                var b = parseInt($(b).find(".product-price").text());
+                console.log("a=" + a + ", b= " + b);
+                return a < b ? 1 : -1;
+            }).appendTo(".card-deck");
+        });
+
+        $('#sort-shuffle').click(function () {
+            $('.card-deck .card').sort(function (a, b) {
+                var a = $(a).find(".product-ram").text();
+                var b = $(b).find(".product-ram").text();
+                console.log("a=" + a + ", b= " + b);
+                return a > b ? 1 : -1;
+            }).appendTo(".card-deck");
+        });
+    });
+</script>
 </body>
 </html>
