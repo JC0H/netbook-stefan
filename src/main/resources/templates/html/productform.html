@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Recipe Form</title>
+    <title>Product Form</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -25,6 +25,11 @@
                 <div class="pannel-group">
                     <div class="panel panel-primary">
                         <div class="panel-body">
+                            <div class="col-md-6">
+                                <img src="../../static/images/guacamole400x400WithX.jpg"
+                                     th:src="@{'/products/' + ${product.id} + '/productimage'}"
+                                     width="200" height="200">
+                            </div>
                             <div class="row">
                                 <div class="col-md-3 form-group">
                                     <label>Wprowadź markę:</label>
@@ -108,6 +113,10 @@
                                     <label>Wprowadź Cenę:</label>
                                     <input type="text" class="form-control" th:field="*{price}"/>
                                 </div>
+                            </div>
+                            <div class="col-md-1">
+                                <a class="btn btn-default" href="#"
+                                   th:href="@{'/products/' + ${product.id} + '/image'}" role="button">Change Image</a>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>

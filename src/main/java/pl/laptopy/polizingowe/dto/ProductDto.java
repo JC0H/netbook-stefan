@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
+import javax.persistence.Lob;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
@@ -66,4 +67,7 @@ public class ProductDto {
 //    @NotEmpty(message = "Please provide information about price.")
 //    @Min(100)
     private String price;
+
+    @Lob
+    private Byte[] image;
 }
