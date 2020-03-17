@@ -31,7 +31,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.authorizeRequests()
+        http.csrf().ignoringAntMatchers("/h2-console/**").disable()
+                .headers().frameOptions().disable()
+                .and().authorizeRequests().antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/admin*").hasRole(ADMIN_ROLE)
                 .antMatchers("/").permitAll()
                 .and().formLogin().defaultSuccessUrl(DEFAULT_SUCCESSFUL_URL, true)
