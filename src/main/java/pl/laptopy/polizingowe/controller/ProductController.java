@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.laptopy.polizingowe.dto.ProductDto;
 import pl.laptopy.polizingowe.service.ProductService;
 
-import java.util.List;
-
 @Slf4j
 @Controller
 public class ProductController {
@@ -19,11 +17,9 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/")
-    public String getAllProducts(@RequestParam(value = "brand", required = false) String brand,
-                                 Model model) {
-        List<ProductDto> products = brand == null ? productService.findAllProducts() : productService.findAllByBrand(brand);
-        model.addAttribute("products", products);
+    @RequestMapping({"", "/"})
+    public String getIndexPage(Model model) {
+        model.addAttribute("products", productService.findAllProducts());
         return "html/products";
     }
 
@@ -31,12 +27,6 @@ public class ProductController {
     public String getOneProduct(@PathVariable Long productId, Model model) {
         model.addAttribute("oneProduct", productService.findOneProduct(productId));
         return "html/oneProduct";
-    }
-
-    @GetMapping("/products/{productId}/show")
-    public String showProduct(@PathVariable String productId, Model model){
-        model.addAttribute("product", productService.findOneProduct(Long.valueOf(productId)));
-        return "html/show";
     }
 
     @GetMapping("/products/new")
@@ -47,8 +37,8 @@ public class ProductController {
 
     @PostMapping("product")
     public String saveOrUpdate(@ModelAttribute ProductDto command){
-        ProductDto savedCommand = productService.saveProduct(command);
-        return "redirect:/products/" + savedCommand.getId() + "/show";
+        productService.saveProduct(command);
+        return "redirect:/";
     }
 
     @GetMapping("/products/{id}/update")

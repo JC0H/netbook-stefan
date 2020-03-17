@@ -8,6 +8,7 @@ import pl.laptopy.polizingowe.mapper.ProductMapper;
 import pl.laptopy.polizingowe.repository.ProductRepository;
 import pl.laptopy.polizingowe.utils.ListConverter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,23 +32,29 @@ public class ProductService {
         return productMapper.mapToProductDto(productRepository.findById(productId).orElseThrow(() -> new RuntimeException("no product with ID")));
     }
 
-    public List<ProductDto> findAllByBrand(String brand) {
-        List<ProductDto> dtoProducts = findAllProducts();
+//    public List<ProductDto> findAllByBrand(String brand) {
+//        List<ProductDto> dtoProducts = findAllProducts();
+//
+//        return dtoProducts.stream()
+//                .filter(productDto -> productDto.getBrand().equals(brand))
+//                .collect(Collectors.toList()
+//                );
+//    }
 
-        return dtoProducts.stream()
-                .filter(productDto -> productDto.getBrand().equals(brand))
-                .collect(Collectors.toList()
-                );
-    }
+//    public List<ProductDto> findAllProducts() {
+//        if(Objects.isNull(productDtoList) || productDtoList.size() < countProducts()) {
+//            List<Product> products = productListConverter.convertIterableToList(productRepository.findAll());
+//            productDtoList = products.stream().map(
+//                    productMapper::mapToProductDto).collect(Collectors.toList()
+//            );
+//        }
+//        return productDtoList;
+//    }
 
-    public List<ProductDto> findAllProducts() {
-        if(Objects.isNull(productDtoList) || productDtoList.size() < countProducts()) {
-            List<Product> products = productListConverter.convertIterableToList(productRepository.findAll());
-            productDtoList = products.stream().map(
-                    productMapper::mapToProductDto).collect(Collectors.toList()
-            );
-        }
-        return productDtoList;
+    public List<Product> findAllProducts() {
+        List<Product> products = new ArrayList<>();
+        productRepository.findAll().iterator().forEachRemaining(products::add);
+        return products;
     }
 
     @Transactional

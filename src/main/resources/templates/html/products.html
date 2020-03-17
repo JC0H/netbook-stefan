@@ -18,7 +18,7 @@
 
     @media (max-width: 1440px) {
         body {
-            padding-top: 0px;
+            padding-top: 0;
         }
     }
 </style>
@@ -26,88 +26,89 @@
 <!--nav bar-->
 <div th:replace="fragments/nav-bar :: nav-bar"></div>
 <!-- end navbar -->
+
 <div class="container">
-    <div class="row">
-        <div class="col-sm-4" th:if="${products.empty}">
-            fuck
-        </div>
-        <div class="col-sm-4" th:each="product : ${products}">
-            <div class="card">
-                <img class="card-img-top img-fluid" src="/templates/img/asd.png" style="width: 18rem"
-                     alt="Card image cap">
-                <div class="card-block">
-                    <h4 class="card-title" th:text="${product.brand + ', ' + product.model}"></h4>
-                    <table>
-                        <tbody>
-                        <tr>
-                            <td>Processor:</td>
-                            <td th:text="${product.processor}"></td>
-                        </tr>
-                        <tr>
-                            <td>ProGrafika:</td>
-                            <td th:text="${product.graphics}"></td>
-                        </tr>
-                        <tr>
-                            <td>Pamiec:</td>
-                            <td th:text="${product.memory}"></td>
-                        </tr>
-                        <tr>
-                            <td>Monitor:</td>
-                            <td th:text="${product.screen}"></td>
-                        </tr>
-                        <tr>
-                            <td>RAM:</td>
-                            <td th:text="${product.ram}"></td>
-                        </tr>
-                        <tr>
-                            <td>Siec:</td>
-                            <td th:text="${product.network}"></td>
-                        </tr>
-                        <tr>
-                            <td>Kolor:</td>
-                            <td th:text="${product.color}"></td>
-                        </tr>
-                        <tr>
-                            <td>Waga:</td>
-                            <td th:text="${product.weight}"></td>
-                        </tr>
-                        <tr>
-                            <td>System operacyjny:</td>
-                            <td th:text="${product.operatingSystem}"></td>
-                        </tr>
-                        <tr>
-                            <td>Wejscia:</td>
-                            <td th:text="${product.usb}"></td>
-                        </tr>
-                        <tr>
-                            <td>Dodatkowe info:</td>
-                            <td th:text="${product.additionalInformation}"></td>
-                        </tr>
-                        <tr>
-                            <td>Cena:</td>
-                            <td th:text="${product.price}" style="color: red"></td>
-                        </tr>
-                        </tbody>
-                        <tfoot>
-                        <tr>
-                            <td><a th:href="@{/products/{id}(id = ${product.id})}" class="btn btn-info" role="button">Podglad</a>
-                            </td>
-                            <td>
-                                <a th:href="@{/cart/{id}(id = ${product.id})}">
-                                    <span class="glyphicon glyphicon-shopping-cart btn btn-warning">Do koszyka</span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr sec:authorize="isAuthenticated()">
-                            <td><a th:href="@{/products/{id}/update(id = ${product.id})}" class="btn btn-success" role="button">Edytuj</a>
-                            </td>
-                            <td><a th:href="@{/products/{id}/delete(id = ${product.id})}" class="btn btn-danger" role="button"
-                                   onclick="return confirm('Na pewno chcesz usunac?');">Usun</a>
-                            </td>
-                        </tr>
-                        </tfoot>
-                    </table>
-                </div>
+<!--    <div class="container" th:if="${products.empty}">-->
+<!--        <h1>Przepraszamy, na razie nie mamy zadnych produktow.</h1>-->
+<!--    </div>-->
+    <div class="card-deck">
+        <div class="col-sm-4 card" th:each="product : ${products}">
+            <img class="card-img-top img-fluid" style="width: 18rem"
+                 alt="Card image cap">
+            <div class="card-block">
+                <h4 class="card-title" th:text="${product.brand + ', ' + product.model}"></h4>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>Processor:</td>
+                        <td th:text="${product.processor}"></td>
+                    </tr>
+                    <tr>
+                        <td>Grafika:</td>
+                        <td th:text="${product.graphics}"></td>
+                    </tr>
+                    <tr>
+                        <td>Pamiec:</td>
+                        <td th:text="${product.memory}"></td>
+                    </tr>
+                    <tr>
+                        <td>Monitor:</td>
+                        <td th:text="${product.screen}"></td>
+                    </tr>
+                    <tr>
+                        <td>RAM:</td>
+                        <td class="product-ram" th:text="${product.ram}"></td>
+                    </tr>
+                    <tr>
+                        <td>Siec:</td>
+                        <td th:text="${product.network}"></td>
+                    </tr>
+                    <tr>
+                        <td>Kolor:</td>
+                        <td th:text="${product.color}"></td>
+                    </tr>
+                    <tr>
+                        <td>Waga:</td>
+                        <td th:text="${product.weight}"></td>
+                    </tr>
+                    <tr>
+                        <td>System operacyjny:</td>
+                        <td th:text="${product.operatingSystem}"></td>
+                    </tr>
+                    <tr>
+                        <td>Wejscia:</td>
+                        <td th:text="${product.usb}"></td>
+                    </tr>
+                    <tr>
+                        <td>Dodatkowe info:</td>
+                        <td th:text="${product.additionalInformation}"></td>
+                    </tr>
+                    <tr>
+                        <td>Cena:</td>
+                        <td  class="product-price" th:text="${product.price}" style="color: red"></td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td><a th:href="@{/products/{id}(id = ${product.id})}" class="btn btn-info" role="button">Podglad</a>
+                        </td>
+                        <td>
+                            <a th:href="@{/cart/{id}(id = ${product.id})}">
+                                <span class="glyphicon glyphicon-shopping-cart btn btn-warning">Do koszyka</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr sec:authorize="isAuthenticated()">
+                        <td><a th:href="@{products/{id}/update(id = ${product.id})}" class="btn btn-success"
+                               role="button">Edytuj</a>
+                        </td>
+                        <td><a th:href="@{products/{id}/delete(id = ${product.id})}" class="btn btn-danger"
+                               role="button"
+                               onclick="return confirm('Na pewno chcesz usunac?');">Usun</a>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
             </div>
         </div>
     </div>
