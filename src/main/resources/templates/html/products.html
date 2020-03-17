@@ -99,9 +99,9 @@
                             </td>
                         </tr>
                         <tr sec:authorize="isAuthenticated()">
-                            <td><a th:href="@{/admin/products/edit/{id}(id = ${product.id})}" class="btn btn-success" role="button">Edytuj</a>
+                            <td><a th:href="@{/products/{id}/update(id = ${product.id})}" class="btn btn-success" role="button">Edytuj</a>
                             </td>
-                            <td><a th:href="@{/admin/products/delete/{id}(id = ${product.id})}" class="btn btn-danger" role="button"
+                            <td><a th:href="@{/products/{id}/delete(id = ${product.id})}" class="btn btn-danger" role="button"
                                    onclick="return confirm('Na pewno chcesz usunac?');">Usun</a>
                             </td>
                         </tr>

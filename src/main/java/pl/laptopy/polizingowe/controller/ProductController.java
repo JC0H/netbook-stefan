@@ -34,7 +34,7 @@ public class ProductController {
     }
 
     @GetMapping("/products/{productId}/show")
-    public String updateRecipe(@PathVariable String productId, Model model){
+    public String showProduct(@PathVariable String productId, Model model){
         model.addAttribute("product", productService.findOneProduct(Long.valueOf(productId)));
         return "html/show";
     }
@@ -49,5 +49,17 @@ public class ProductController {
     public String saveOrUpdate(@ModelAttribute ProductDto command){
         ProductDto savedCommand = productService.saveProduct(command);
         return "redirect:/products/" + savedCommand.getId() + "/show";
+    }
+
+    @GetMapping("/products/{id}/update")
+    public String updateRecipe(@PathVariable String id, Model model){
+        model.addAttribute("product", productService.findOneProduct(Long.valueOf(id)));
+        return "html/productform";
+    }
+
+    @GetMapping("/products/{id}/delete")
+    public String deleteById(@PathVariable String id){
+        productService.deleteProduct(Long.valueOf(id));
+        return "redirect:/";
     }
 }
