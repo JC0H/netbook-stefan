@@ -1,13 +1,11 @@
 package pl.laptopy.polizingowe.controller;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.laptopy.polizingowe.dto.ProductDto;
 import pl.laptopy.polizingowe.service.ProductService;
 
-@Slf4j
 @Controller
 public class ProductController {
 
@@ -17,15 +15,15 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @RequestMapping({"", "/"})
+    @RequestMapping({"","/"})
     public String getIndexPage(Model model) {
-        model.addAttribute("products", productService.findAllProducts());
+        model.addAttribute("products", productService.getProducts());
         return "html/products";
     }
 
     @GetMapping("products/{productId}")
     public String getOneProduct(@PathVariable Long productId, Model model) {
-        model.addAttribute("oneProduct", productService.findOneProduct(productId));
+        model.addAttribute("oneProduct", productService.findById(productId));
         return "html/oneProduct";
     }
 
@@ -35,21 +33,21 @@ public class ProductController {
         return "html/productform";
     }
 
-    @PostMapping("product")
-    public String saveOrUpdate(@ModelAttribute ProductDto command){
-        productService.saveProduct(command);
-        return "redirect:/";
+    @GetMapping("/products/{id}/update")
+    public String updateProduct(@PathVariable String id, Model model){
+        model.addAttribute("product", productService.findCommandById(Long.valueOf(id)));
+        return "html/productform";
     }
 
-    @GetMapping("/products/{id}/update")
-    public String updateRecipe(@PathVariable String id, Model model){
-        model.addAttribute("product", productService.findOneProduct(Long.valueOf(id)));
-        return "html/productform";
+    @PostMapping("product")
+    public String saveOrUpdate(@ModelAttribute ProductDto productDto){
+        productService.saveProductCommand(productDto);
+        return "redirect:/";
     }
 
     @GetMapping("/products/{id}/delete")
     public String deleteById(@PathVariable String id){
-        productService.deleteProduct(Long.valueOf(id));
+        productService.deleteById(Long.valueOf(id));
         return "redirect:/";
     }
 }

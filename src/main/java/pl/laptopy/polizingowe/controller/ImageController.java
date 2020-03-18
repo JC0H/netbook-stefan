@@ -31,9 +31,10 @@ public class ImageController {
         this.productService = productService;
     }
 
+
     @GetMapping("products/{id}/image")
     public String showUploadForm(@PathVariable String id, Model model){
-        model.addAttribute("product", productService.findOneProduct(Long.valueOf(id)));
+        model.addAttribute("product", productService.findCommandById(Long.valueOf(id)));
         return "html/imageuploadform";
     }
 
@@ -45,7 +46,7 @@ public class ImageController {
 
     @GetMapping("products/{id}/productimage")
     public void renderImageFromDB(@PathVariable String id, HttpServletResponse response) throws IOException {
-        ProductDto productDto = productService.findOneProduct(Long.valueOf(id));
+        ProductDto productDto = productService.findCommandById(Long.valueOf(id));
 
         if (productDto.getImage() != null) {
             byte[] byteArray = new byte[productDto.getImage().length];
