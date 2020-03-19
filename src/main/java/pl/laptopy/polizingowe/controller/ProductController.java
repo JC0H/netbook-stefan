@@ -18,7 +18,7 @@ public class ProductController {
 
     @GetMapping("/{productId}")
     public String getOneProduct(@PathVariable Long productId, Model model) {
-        model.addAttribute("oneProduct", productService.findById(productId));
+        model.addAttribute("oneProduct", productService.findOneProduct(productId));
         return "html/oneProduct";
     }
 
