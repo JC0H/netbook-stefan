@@ -17,7 +17,7 @@ public class ProductController {
 
     @RequestMapping({"","/"})
     public String getIndexPage(Model model) {
-        model.addAttribute("products", productService.getProducts());
+        model.addAttribute("products", productService.findAllProducts());
         return "html/products";
     }
 
@@ -35,19 +35,19 @@ public class ProductController {
 
     @GetMapping("/products/{id}/update")
     public String updateProduct(@PathVariable String id, Model model){
-        model.addAttribute("product", productService.findCommandById(Long.valueOf(id)));
+        model.addAttribute("product", productService.findOneProduct(Long.valueOf(id)));
         return "html/productform";
     }
 
     @PostMapping("product")
     public String saveOrUpdate(@ModelAttribute ProductDto productDto){
-        productService.saveProductCommand(productDto);
+        productService.saveProduct(productDto);
         return "redirect:/";
     }
 
     @GetMapping("/products/{id}/delete")
     public String deleteById(@PathVariable String id){
-        productService.deleteById(Long.valueOf(id));
+        productService.deleteProduct(Long.valueOf(id));
         return "redirect:/";
     }
 }

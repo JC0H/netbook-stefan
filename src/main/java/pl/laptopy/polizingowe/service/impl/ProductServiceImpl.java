@@ -4,8 +4,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.laptopy.polizingowe.dto.ProductDto;
 import pl.laptopy.polizingowe.entity.Product;
-import pl.laptopy.polizingowe.mapper.ProductCommandToProduct;
-import pl.laptopy.polizingowe.mapper.ProductToProductCommand;
+import pl.laptopy.polizingowe.mapper.ProductDtoToProductMapper;
+import pl.laptopy.polizingowe.mapper.ProductToProductDtoMapper;
 import pl.laptopy.polizingowe.repository.ProductRepository;
 import pl.laptopy.polizingowe.service.ProductService;
 
@@ -18,17 +18,17 @@ import java.util.Optional;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
-    private final ProductCommandToProduct productCommandToProduct;
-    private final ProductToProductCommand productToProductCommand;
+    private final ProductDtoToProductMapper productDtoToProductMapper;
+    private final ProductToProductDtoMapper productToProductDtoMapper;
 
-    public ProductServiceImpl(ProductRepository productRepository, ProductCommandToProduct productCommandToProduct, ProductToProductCommand productToProductCommand) {
+    public ProductServiceImpl(ProductRepository productRepository, ProductDtoToProductMapper productDtoToProductMapper, ProductToProductDtoMapper productToProductDtoMapper) {
         this.productRepository = productRepository;
-        this.productCommandToProduct = productCommandToProduct;
-        this.productToProductCommand = productToProductCommand;
+        this.productDtoToProductMapper = productDtoToProductMapper;
+        this.productToProductDtoMapper = productToProductDtoMapper;
     }
 
     @Override
-    public List<Product> getProducts() {
+    public List<Product> findAllProducts() {
         List<Product> products = new ArrayList<>();
         productRepository.findAll().iterator().forEachRemaining(products::add);
         return products;
@@ -46,22 +46,22 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public ProductDto findCommandById(Long l) {
-        return productToProductCommand.convert(findById(l));
+    public ProductDto findOneProduct(Long l) {
+        return productToProductDtoMapper.convert(findById(l));
     }
 
     @Override
     @Transactional
-    public ProductDto saveProductCommand(ProductDto command) {
-        Product product = productCommandToProduct.convert(command);
+    public ProductDto saveProduct(ProductDto productDto) {
+        Product product = productDtoToProductMapper.convert(productDto);
 
         Product saveProduct = productRepository.save(product);
-        return productToProductCommand.convert(saveProduct);
+        return productToProductDtoMapper.convert(saveProduct);
     }
 
     @Override
     @Transactional
-    public void deleteById(Long idToDelete) {
+    public void deleteProduct(Long idToDelete) {
         productRepository.deleteById(idToDelete);
     }
 }

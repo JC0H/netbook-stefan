@@ -39,6 +39,6 @@ public class OrderSummaryService {
 //    }
 //
 //    public void deleteOrderSummaryById(Long orderSummaryId) {
-//        orderSummaryRepository.deleteById(orderSummaryId);
+//        orderSummaryRepository.deleteProduct(orderSummaryId);
 //    }
 }

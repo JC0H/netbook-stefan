@@ -8,7 +8,7 @@ import pl.laptopy.polizingowe.dto.ProductDto;
 import pl.laptopy.polizingowe.entity.Product;
 
 @Component
-public class ProductToProductCommand implements Converter<Product, ProductDto> {
+public class ProductToProductDtoMapper implements Converter<Product, ProductDto> {
     @Synchronized
     @Nullable
     @Override

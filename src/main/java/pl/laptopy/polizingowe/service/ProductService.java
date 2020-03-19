@@ -6,13 +6,13 @@ import pl.laptopy.polizingowe.entity.Product;
 import java.util.List;
 
 public interface ProductService {
-    List<Product> getProducts();
+    List<Product> findAllProducts();
 
     Product findById(Long l);
 
-    ProductDto findCommandById(Long l);
+    ProductDto findOneProduct(Long l);
 
-    ProductDto saveProductCommand(ProductDto command);
+    ProductDto saveProduct(ProductDto command);
 
-    void deleteById(Long idToDelete);
+    void deleteProduct(Long idToDelete);
 }
