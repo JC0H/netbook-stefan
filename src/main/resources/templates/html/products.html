@@ -18,7 +18,7 @@
 
     @media (max-width: 1440px) {
         body {
-            padding-top: 0px;
+            padding-top: 0;
         }
     }
 </style>
@@ -118,5 +118,37 @@
 
 
 <div th:replace="fragments/footer :: footer"></div>
+
+<script type="application/javascript">
+    $(document).ready(function () {
+        $('#sort-small-price').click(function () {
+            console.log("sort");
+            $(".card-deck .card").sort(function (a, b) {
+                var a = parseInt($(a).find(".product-price").text());
+                var b = parseInt($(b).find(".product-price").text());
+                console.log("a=" + a + ", b= " + b);
+                return a > b ? 1 : -1;
+            }).appendTo(".card-deck");
+        });
+
+        $('#sort-big-price').click(function () {
+            $('.card-deck .card').sort(function (a, b) {
+                var a = parseInt($(a).find(".product-price").text());
+                var b = parseInt($(b).find(".product-price").text());
+                console.log("a=" + a + ", b= " + b);
+                return a < b ? 1 : -1;
+            }).appendTo(".card-deck");
+        });
+
+        $('#sort-shuffle').click(function () {
+            $('.card-deck .card').sort(function (a, b) {
+                var a = $(a).find(".product-ram").text();
+                var b = $(b).find(".product-ram").text();
+                console.log("a=" + a + ", b= " + b);
+                return a > b ? 1 : -1;
+            }).appendTo(".card-deck");
+        });
+    });
+</script>
 </body>
 </html>
