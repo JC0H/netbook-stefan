@@ -16,7 +16,11 @@
 <div class="container" th:object="${oneProduct}" style="background: brown">
 
     <div class="row">
-     <div class="col-sm-6"><img class="card-img-top img-fluid" src="/templates/img/asd.png" style="width: 18rem" alt="Card image cap"></div>
+     <div class="col-sm-6">
+         <img class="card-img-top img-fluid" style="width: 18rem"
+              th:src="@{'/products/' + ${oneProduct.id} + '/productimage'}"
+              width="200" height="200">
+     </div>
         <div class="col-sm-4">
             <table>
                 <tbody>
@@ -86,15 +90,9 @@
 </div>
 
 <!--end product-->
-
-
-
-
-
-
-
 <!--footer-->
 <div th:replace="fragments/footer :: footer"></div>
 <!--end footer-->
+
 </div></body>
 </html>
