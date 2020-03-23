@@ -17,7 +17,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final PropertiesConfig propertiesConfig;
-    private final String DEFAULT_SUCCESSFUL_URL = "/";
+    private final String DEFAULT_SUCCESSFUL_URL = "/products";
     private final String ADMIN_ROLE = "ADMIN";
 
     @Override

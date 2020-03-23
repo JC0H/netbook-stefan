@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 import pl.laptopy.polizingowe.entity.Product;
 import pl.laptopy.polizingowe.repository.ProductRepository;
 import pl.laptopy.polizingowe.service.ImageService;
+import pl.laptopy.polizingowe.utils.ImageUtils;
 
 import java.io.IOException;
 
@@ -27,15 +28,7 @@ public class ImageServiceImpl implements ImageService {
         try {
             Product product = productRepository.findById(recipeId).get();
 
-            Byte[] byteObjects = new Byte[file.getBytes().length];
-
-            int i = 0;
-
-            for (byte b : file.getBytes()){
-                byteObjects[i++] = b;
-            }
-
-            product.setImage(byteObjects);
+            ImageUtils.convertImageToBytes(file, product);
 
             productRepository.save(product);
         } catch (IOException e) {
