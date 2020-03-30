@@ -14,22 +14,23 @@ import java.io.InputStream;
 public class ImageUtils {
 
 
-    public static void render(HttpServletResponse response, ProductDto productDto) throws IOException {
-        if (productDto.getImage() != null) {
-            byte[] byteArray = new byte[productDto.getImage().length];
+    public static void convertMainImageBytesToImage(HttpServletResponse response, ProductDto productDto) throws IOException {
+        if (productDto.getMain_image() != null) {
+            byte[] byteArray = new byte[productDto.getMain_image().length];
             int i = 0;
 
-            for (Byte wrappedByte : productDto.getImage()){
+            for (Byte wrappedByte : productDto.getMain_image()){
                 byteArray[i++] = wrappedByte;
             }
 
-            response.setContentType("image/jpeg");
+            response.setContentType("main_image/jpeg");
             InputStream is = new ByteArrayInputStream(byteArray);
             IOUtils.copy(is, response.getOutputStream());
         }
     }
 
-    public static void convertImageToBytes(MultipartFile file, Product product) throws IOException {
+    public static void convertMainImageToBytes(MultipartFile file, Product product)
+            throws IOException {
         Byte[] byteObjects = new Byte[file.getBytes().length];
 
         int i = 0;
@@ -38,6 +39,6 @@ public class ImageUtils {
             byteObjects[i++] = b;
         }
 
-        product.setImage(byteObjects);
+        product.setMain_image(byteObjects);
     }
 }

@@ -61,6 +61,6 @@ public class Product {
     private String price;
 
     @Lob
-    private Byte[] image;
+    private Byte[] main_image;
 
 }
