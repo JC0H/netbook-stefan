@@ -1,4 +1,4 @@
-package pl.laptopy.polizingowe.service;
+package pl.laptopy.polizingowe.service.impl;
 
 import org.springframework.stereotype.Service;
 import pl.laptopy.polizingowe.dto.OrderSummaryDto;

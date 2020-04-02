@@ -1,4 +1,4 @@
-package pl.laptopy.polizingowe.service;
+package pl.laptopy.polizingowe.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;

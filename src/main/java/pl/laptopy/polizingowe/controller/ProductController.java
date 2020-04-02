@@ -1,18 +1,11 @@
 package pl.laptopy.polizingowe.controller;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import pl.laptopy.polizingowe.dto.ProductDto;
 import pl.laptopy.polizingowe.service.ProductService;
 
-import java.util.List;
-
-@Slf4j
 @Controller
 @RequestMapping("/products")
 public class ProductController {
@@ -23,11 +16,9 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping
-    public String getAllProducts(@RequestParam(value = "brand", required = false) String brand,
-                                 Model model) {
-        List<ProductDto> products = brand == null ? productService.findAllProducts() : productService.findAllByBrand(brand);
-        model.addAttribute("products", products);
+    @RequestMapping()
+    public String getAllProducts(Model model) {
+        model.addAttribute("products", productService.findAllProducts());
         return "html/products";
     }
 
@@ -35,5 +26,29 @@ public class ProductController {
     public String getOneProduct(@PathVariable Long productId, Model model) {
         model.addAttribute("oneProduct", productService.findOneProduct(productId));
         return "html/oneProduct";
+    }
+
+    @GetMapping("/new")
+    public String newProduct(Model model){
+        model.addAttribute("product", new ProductDto());
+        return "html/productform";
+    }
+
+    @GetMapping("/{id}/update")
+    public String updateProduct(@PathVariable String id, Model model){
+        model.addAttribute("product", productService.findOneProduct(Long.valueOf(id)));
+        return "html/productform";
+    }
+
+    @PostMapping("product")
+    public String saveOrUpdate(@ModelAttribute ProductDto productDto){
+        productService.saveProduct(productDto);
+        return "redirect:/products";
+    }
+
+    @GetMapping("/{id}/delete")
+    public String deleteById(@PathVariable String id){
+        productService.deleteProduct(Long.valueOf(id));
+        return "redirect:/products";
     }
 }

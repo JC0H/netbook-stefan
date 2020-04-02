@@ -3,7 +3,6 @@ package pl.laptopy.polizingowe.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.laptopy.polizingowe.dto.OrderSummaryDto;
 import pl.laptopy.polizingowe.facade.OrderSummaryFacade;
