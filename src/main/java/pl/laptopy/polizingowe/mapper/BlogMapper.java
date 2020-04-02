@@ -17,11 +17,19 @@ public class BlogMapper {
         .collect(Collectors.toList());
     }
 
-    private BlogDto mapBlogToDto(Blog blog) {
+    public BlogDto mapBlogToDto(Blog blog) {
         return BlogDto.builder()
                 .id(blog.getId())
                 .title(blog.getTitle())
                 .content(blog.getContent())
+                .build();
+    }
+
+    public Blog mapBlogToDto(BlogDto blogDto) {
+        return Blog.builder()
+                .id(blogDto.getId())
+                .title(blogDto.getTitle())
+                .content(blogDto.getContent())
                 .build();
     }
 }
