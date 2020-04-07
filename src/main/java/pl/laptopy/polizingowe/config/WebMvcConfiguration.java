@@ -12,5 +12,6 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addRedirectViewController("/", "/products");
+        registry.addViewController("/faq").setViewName("html/faq");
     }
 }

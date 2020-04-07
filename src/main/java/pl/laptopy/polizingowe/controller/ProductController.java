@@ -16,7 +16,7 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @RequestMapping()
+    @GetMapping
     public String getAllProducts(Model model) {
         model.addAttribute("products", productService.findAllProducts());
         return "html/products";
@@ -46,7 +46,7 @@ public class ProductController {
         return "redirect:/products";
     }
 
-    @GetMapping("/{id}/delete")
+    @DeleteMapping("/{id}/delete")
     public String deleteById(@PathVariable String id){
         productService.deleteProduct(Long.valueOf(id));
         return "redirect:/products";

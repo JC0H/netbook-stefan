@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>Laptopiki</title>
     <meta charset="utf-8">
@@ -10,36 +10,6 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<style>
-    #sort-dropdown {
-        display: none;
-    }
-    #filter-dropdown {
-        display: none;
-    }
-
-    body {
-        background: #00FFFF;
-        padding-top: 60px;
-    }
-
-    @media (max-width: 1440px) {
-        body {
-            padding-top: 0;
-        }
-    }
-
-    .blog-container {
-        background: aliceblue;
-    }
-
-    hr {
-        display: block;
-        margin: 0.5em auto;
-        border-style: inset;
-        border-width: 1px;
-    }
-</style>
 <body>
 <div th:replace="fragments/nav-bar :: nav-bar"></div>
 
@@ -51,11 +21,25 @@
             <h4 class="card-title" th:text="${blog.title}"></h4>
             <div class="card-block" th:text="${blog.content}">
             </div>
+            <div sec:authorize="isAuthenticated()">
+                <table>
+                    <tr>
+                        <td>
+                            <a th:href="@{/admin/blog/edit/{id}(id = ${blog.id})}" class="btn btn-success"
+                               role="button">Edytuj</a>
+                        </td>
+                        <td><a th:href="@{/admin/blog/delete/{id}(id = ${blog.id})}" class="btn btn-danger"
+                               role="button"
+                               onclick="return confirm('Na pewno chcesz usunac blog?');">Usun</a>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
             <hr/>
         </div>
     </div>
 </div>
-
 
 <div th:replace="fragments/footer :: footer"></div>
 </body>
