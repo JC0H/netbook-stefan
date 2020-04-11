@@ -16,8 +16,6 @@
 <div class="container blog-container">
     <div class="card-deck">
         <div class="col-sm-9 card" th:each="blog : ${blogList}">
-            <img class="card-img-top img-fluid" style="width: 18rem"
-                 alt="Blog image">
             <h4 class="card-title" th:text="${blog.title}"></h4>
             <div class="card-block" th:text="${blog.content}">
             </div>
