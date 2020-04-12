@@ -26,5 +26,5 @@ public class ProductDto {
     private String usb;
     private String additionalInformation;
     private String price;
-    private Byte[] image;
+    private Byte[] main_image;
 }

@@ -13,26 +13,20 @@ import java.io.IOException;
 @Service
 public class ImageServiceImpl implements ImageService {
 
-
     private final ProductRepository productRepository;
 
     public ImageServiceImpl(ProductRepository productService) {
-
         this.productRepository = productService;
     }
 
     @Override
     @Transactional
-    public void saveImageFile(Long recipeId, MultipartFile file) {
-
+    public void saveMainImageFile(Long productId, MultipartFile file) {
         try {
-            Product product = productRepository.findById(recipeId).get();
-
-            ImageUtils.convertImageToBytes(file, product);
-
+            Product product = productRepository.findById(productId).get();
+            ImageUtils.convertMainImageToBytes(file, product);
             productRepository.save(product);
         } catch (IOException e) {
-            //todo handle
             e.printStackTrace();
         }
     }

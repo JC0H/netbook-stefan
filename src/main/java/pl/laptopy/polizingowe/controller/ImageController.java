@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import pl.laptopy.polizingowe.dto.ProductDto;
+import pl.laptopy.polizingowe.entity.Product;
 import pl.laptopy.polizingowe.service.ImageService;
 import pl.laptopy.polizingowe.service.ProductService;
 import pl.laptopy.polizingowe.utils.ImageUtils;
@@ -29,7 +30,6 @@ public class ImageController {
         this.productService = productService;
     }
 
-
     @GetMapping("products/{id}/image")
     public String showUploadForm(@PathVariable String id, Model model){
         model.addAttribute("product", productService.findOneProduct(Long.valueOf(id)));
@@ -37,16 +37,15 @@ public class ImageController {
     }
 
     @PostMapping("products/{id}/image")
-    public String handleImagePost(@PathVariable String id, @RequestParam("imagefile") MultipartFile file){
-        imageService.saveImageFile(Long.valueOf(id), file);
+    public String handleImagePost(@PathVariable String id,
+                                  @RequestParam("imagefile") MultipartFile file){
+        imageService.saveMainImageFile(Long.valueOf(id), file);
         return "redirect:/products";
     }
 
     @GetMapping("products/{id}/productimage")
     public void renderImageFromDB(@PathVariable String id, HttpServletResponse response) throws IOException {
         ProductDto productDto = productService.findOneProduct(Long.valueOf(id));
-        ImageUtils.render(response, productDto);
+        ImageUtils.convertMainImageBytesToImage(response, productDto);
     }
-
-
 }
