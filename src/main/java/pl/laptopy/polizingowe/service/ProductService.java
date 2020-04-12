@@ -1,12 +1,11 @@
 package pl.laptopy.polizingowe.service;
 
 import pl.laptopy.polizingowe.dto.ProductDto;
-import pl.laptopy.polizingowe.entity.Product;
 
 import java.util.List;
 
 public interface ProductService {
-    List<Product> findAllProducts();
+    List<ProductDto> findAllProducts();
 
     ProductDto findOneProduct(Long l);
 

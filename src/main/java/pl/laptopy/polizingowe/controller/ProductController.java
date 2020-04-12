@@ -19,6 +19,7 @@ public class ProductController {
     @GetMapping
     public String getAllProducts(Model model) {
         model.addAttribute("products", productService.findAllProducts());
+        model.addAttribute("showSortButtons", true);
         return "html/products";
     }
 
