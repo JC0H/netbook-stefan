@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 @Component
 public class BlogMapper {
 
-
     public List<BlogDto> toBlogDtoList(List<Blog> blogList) {
         return blogList.stream()
         .map(this::mapBlogToDto)
