@@ -43,8 +43,8 @@ public class ProductController {
 
     @PostMapping("product")
     public String saveOrUpdate(@ModelAttribute ProductDto productDto){
-        productService.saveProduct(productDto);
-        return "redirect:/products";
+        ProductDto product = productService.saveProduct(productDto);
+        return "redirect:/products/" + product.getId() + "/image";
     }
 
     @DeleteMapping("/{id}/delete")
