@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Laptopiki</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!--    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+<!-- nav bar -->
+<nav class="navbar navbar-inverse navbar-fixed-top" style="position: sticky;" th:fragment="nav-bar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/products">Laptopy polizingowe</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <!-- <li class="active"><a href="#">Home</a></li> -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Laptopy
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/products?brand=Acer">Acer</a></li>
+                    <li><a href="/products?brand=Apple">Apple</a></li>
+                    <li><a href="/products?brand=Dell">Dell</a></li>
+                    <li><a href="/products?brand=Lenovo">Lenovo</a></li>
+                    <li><a href="/products?brand=HP">HP</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Kontakt</a></li>
+            <li><a href="#">FAQ</a></li>
+        </ul>
+        <div class="form-group has-search navbar-left navbar-form">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input type="text" class="form-control" placeholder="Wyszukaj">
+        </div>
+        <ul class="nav navbar-nav navbar-left">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sortowanie
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" id="sort-shuffle">Domyślne sortowanie</a></li>
+                    <li><a href="#" id="sort-small-price">Sortuj wg ceny: od najniższej</a></li>
+                    <li><a href="#" id="sort-big-price">Sortuj wg ceny: od najwyższej</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Filtrowanie
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" id="sort-shuffle">Domyślne sortowanie</a></li>
+                    <li><a href="#" id="sort-small-price">Sortuj wg ceny: od najniższej</a></li>
+                    <li><a href="#" id="sort-big-price">Sortuj wg ceny: od najwyższej</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" class="btn btn-inverse btn-lg">
+                <span class="glyphicon glyphicon-shopping-cart"></span></a>
+            </li>
+        </ul>
+        <!--  admin  buttons-->
+        <ul class="nav navbar-nav navbar-right" sec:authorize="isAuthenticated()">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dodaj
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Produkt</a></li>
+                    <li><a href="#">Zamowienie</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </li>
+        </ul>
+        <!--      end  admin  buttons-->
+    </div>
+</nav>
+<!-- end nav bar -->
+</body>
+</html>

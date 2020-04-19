@@ -1,6 +1,6 @@
 package pl.laptopy.polizingowe.controller;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,16 +12,12 @@ import pl.laptopy.polizingowe.service.ProductService;
 
 import java.util.List;
 
-@Slf4j
 @Controller
-@RequestMapping("/products")
-public class ProductController {
+@RequestMapping("/admin/products")
+@RequiredArgsConstructor
+public class AdminController {
 
     private final ProductService productService;
-
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
 
     @GetMapping
     public String getAllProducts(@RequestParam(value = "brand", required = false) String brand,
@@ -36,4 +32,5 @@ public class ProductController {
         model.addAttribute("oneProduct", productService.findOneProduct(productId));
         return "html/oneProduct";
     }
+
 }

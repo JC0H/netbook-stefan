@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Laptopiki</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div th:replace="fragments/nav-bar :: nav-bar"></div>
+
+<div class="container" th:object="${oneProduct}" style="background: brown">
+
+    <div class="row">
+     <div class="col-sm-6"><img class="card-img-top img-fluid" src="/templates/img/asd.png" style="width: 18rem" alt="Card image cap"></div>
+        <div class="col-sm-4">
+            <table>
+                <tbody>
+                <tr>
+                    <td>Processor:</td>
+                    <td th:text="${oneProduct.processor}"></td>
+                </tr>
+                <tr>
+                    <td>Grafika:</td>
+                    <td th:text="${oneProduct.graphics}"></td>
+                </tr>
+                <tr>
+                    <td>Pamiec:</td>
+                    <td th:text="${oneProduct.memory}"></td>
+                </tr>
+                <tr>
+                    <td>Monitor:</td>
+                    <td th:text="${oneProduct.screen}"></td>
+                </tr>
+                <tr>
+                    <td>RAM:</td>
+                    <td th:text="${oneProduct.ram}"></td>
+                </tr>
+                <tr>
+                    <td>Siec:</td>
+                    <td th:text="${oneProduct.network}"></td>
+                </tr>
+                <tr>
+                    <td>Kolor:</td>
+                    <td th:text="${oneProduct.color}"></td>
+                </tr>
+                <tr>
+                    <td>Waga:</td>
+                    <td th:text="${oneProduct.weight}"></td>
+                </tr>
+                <tr>
+                    <td>System operacyjny:</td>
+                    <td th:text="${oneProduct.operatingSystem}"></td>
+                </tr>
+                <tr>
+                    <td>Wejscia:</td>
+                    <td th:text="${oneProduct.usb}"></td>
+                </tr>
+                <tr>
+                    <td>Dodatkowe info:</td>
+                    <td th:text="${oneProduct.additionalInformation}"></td>
+                </tr>
+                <tr>
+                    <td>Cena:</td>
+                    <td th:text="${oneProduct.price}" style="color: red"></td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td>
+                        <a href="@{/cart/{id}(id = ${oneProduct.id})}">
+                            <span class="glyphicon glyphicon-shopping-cart btn btn-warning"> Do koszyka</span>
+                        </a>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+<!--end product-->
+
+
+
+
+
+
+
+<!--footer-->
+<div th:replace="fragments/footer :: footer"></div>
+<!--end footer-->
+</div></body>
+</html>
