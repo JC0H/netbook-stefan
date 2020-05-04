@@ -3,8 +3,8 @@ package pl.laptopy.polizingowe.facade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import pl.laptopy.polizingowe.dto.OrderSummaryDto;
-import pl.laptopy.polizingowe.service.MailService;
-import pl.laptopy.polizingowe.service.OrderSummaryService;
+import pl.laptopy.polizingowe.service.impl.MailService;
+import pl.laptopy.polizingowe.service.impl.OrderSummaryService;
 
 import java.util.List;
 

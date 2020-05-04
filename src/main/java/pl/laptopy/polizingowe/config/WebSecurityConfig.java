@@ -30,17 +30,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http.authorizeRequests()
-                .antMatchers("/admin*").hasRole(ADMIN_ROLE)
+                .antMatchers("/admin/**").hasRole(ADMIN_ROLE)
                 .antMatchers("/").permitAll()
                 .and().formLogin().defaultSuccessUrl(DEFAULT_SUCCESSFUL_URL, true)
-                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl(DEFAULT_SUCCESSFUL_URL);
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl(DEFAULT_SUCCESSFUL_URL)
+                .and().csrf().ignoringAntMatchers("/h2-console/**").disable()
+                .headers().frameOptions().disable()
+                .and().authorizeRequests().antMatchers("/h2-console/**").permitAll();
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 }
